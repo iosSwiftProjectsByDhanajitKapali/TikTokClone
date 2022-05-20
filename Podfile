@@ -6,5 +6,11 @@ target 'TikTokClone' do
   use_frameworks!
 
   # Pods for TikTokClone
+	pod 'Firebase/Core'
+	pod 'Firebase/Storage'
+	pod 'Firebase/Database'
+	pod 'Firebase/Auth'
+	pod 'Firebase/Analytics'
+	pod 'Firebase/Crashlytics'
 
 end

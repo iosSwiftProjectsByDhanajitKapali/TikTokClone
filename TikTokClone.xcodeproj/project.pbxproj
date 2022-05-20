@@ -27,6 +27,7 @@
 		01D92003283565A500AA190F /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D92002283565A500AA190F /* DatabaseManager.swift */; };
 		01D92005283565B400AA190F /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D92004283565B400AA190F /* StorageManager.swift */; };
 		01D92007283565D300AA190F /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D92006283565D300AA190F /* HapticsManager.swift */; };
+		01FC67472837994C00950428 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01FC67462837994C00950428 /* GoogleService-Info.plist */; };
 		0B46436B4F96FB6E8BB1A21D /* Pods_TikTokClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA668F2F77557195BCC2C03 /* Pods_TikTokClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		01D92002283565A500AA190F /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		01D92004283565B400AA190F /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		01D92006283565D300AA190F /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
+		01FC67462837994C00950428 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		305FB5C37C9992E1E2C51668 /* Pods-TikTokClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TikTokClone.release.xcconfig"; path = "Target Support Files/Pods-TikTokClone/Pods-TikTokClone.release.xcconfig"; sourceTree = "<group>"; };
 		7FA668F2F77557195BCC2C03 /* Pods_TikTokClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TikTokClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A652D5DD4DCDDE45DD841A40 /* Pods-TikTokClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TikTokClone.debug.xcconfig"; path = "Target Support Files/Pods-TikTokClone/Pods-TikTokClone.debug.xcconfig"; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				01D91FE0283562EB00AA190F /* Resources */,
 				01D91FD528355A1000AA190F /* Assets.xcassets */,
 				01D91FDA28355A1000AA190F /* Info.plist */,
+				01FC67462837994C00950428 /* GoogleService-Info.plist */,
 			);
 			path = TikTokClone;
 			sourceTree = "<group>";
@@ -224,6 +227,8 @@
 				01D91FC528355A0500AA190F /* Sources */,
 				01D91FC628355A0500AA190F /* Frameworks */,
 				01D91FC728355A0500AA190F /* Resources */,
+				DC9AB194BC223B78E96842DE /* [CP] Embed Pods Frameworks */,
+				01FC67482837A18A00950428 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -274,12 +279,32 @@
 			files = (
 				01D91FD928355A1000AA190F /* LaunchScreen.storyboard in Resources */,
 				01D91FD628355A1000AA190F /* Assets.xcassets in Resources */,
+				01FC67472837994C00950428 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		01FC67482837A18A00950428 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+		};
 		DB2336EF198C2F951B4A645C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -300,6 +325,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DC9AB194BC223B78E96842DE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TikTokClone/Pods-TikTokClone-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TikTokClone/Pods-TikTokClone-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TikTokClone/Pods-TikTokClone-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -377,7 +419,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -466,6 +508,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = S83TL6GCMZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TikTokClone/Info.plist;
