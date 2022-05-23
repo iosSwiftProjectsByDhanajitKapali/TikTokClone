@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01D66C50283B9EE8005B6462 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D66C4F283B9EE8005B6462 /* UIViewExtension.swift */; };
+		01D66C52283BA5A5005B6462 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D66C51283BA5A5005B6462 /* PostModel.swift */; };
 		01D91FCD28355A0500AA190F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D91FCC28355A0500AA190F /* AppDelegate.swift */; };
 		01D91FCF28355A0500AA190F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D91FCE28355A0500AA190F /* SceneDelegate.swift */; };
 		01D91FD128355A0500AA190F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D91FD028355A0500AA190F /* HomeViewController.swift */; };
@@ -32,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01D66C4F283B9EE8005B6462 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		01D66C51283BA5A5005B6462 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		01D91FC928355A0500AA190F /* TikTokClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TikTokClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01D91FCC28355A0500AA190F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01D91FCE28355A0500AA190F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +76,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01D66C4E283B9ECC005B6462 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				01D66C4F283B9EE8005B6462 /* UIViewExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		01D91FC028355A0500AA190F = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +105,7 @@
 		01D91FCB28355A0500AA190F /* TikTokClone */ = {
 			isa = PBXGroup;
 			children = (
+				01D66C4E283B9ECC005B6462 /* Extensions */,
 				01D91FE52835635600AA190F /* Managers */,
 				01D91FE42835634C00AA190F /* ViewModels */,
 				01D91FE32835634600AA190F /* Models */,
@@ -136,6 +149,7 @@
 		01D91FE32835634600AA190F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				01D66C51283BA5A5005B6462 /* PostModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -352,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01D92007283565D300AA190F /* HapticsManager.swift in Sources */,
+				01D66C52283BA5A5005B6462 /* PostModel.swift in Sources */,
 				01D92005283565B400AA190F /* StorageManager.swift in Sources */,
 				01D92003283565A500AA190F /* DatabaseManager.swift in Sources */,
 				01D91FE92835641500AA190F /* ExploreViewController.swift in Sources */,
@@ -364,6 +379,7 @@
 				01D91FF9283564E300AA190F /* TabBarViewController.swift in Sources */,
 				01D91FEB2835642800AA190F /* CameraViewController.swift in Sources */,
 				01D91FD128355A0500AA190F /* HomeViewController.swift in Sources */,
+				01D66C50283B9EE8005B6462 /* UIViewExtension.swift in Sources */,
 				01D91FED2835643600AA190F /* NotificationsViewController.swift in Sources */,
 				01D91FF32835649800AA190F /* SignInViewController.swift in Sources */,
 				01D91FEF2835644F00AA190F /* ProfileViewController.swift in Sources */,
