@@ -7,10 +7,32 @@
 
 import UIKit
 
+protocol CommentsViewControllerDelegate : AnyObject {
+    func didTapCloseForComments(with viewController : CommentsViewController)
+}
+
+
 class CommentsViewController: UIViewController {
 
-    private let post : PostModel
+    weak var delegate : CommentsViewControllerDelegate?
     
+    // MARK: - Private Data Members
+    private let post : PostModel
+    private var comments = [PostComment]()
+    
+    // MARK: - UI Components
+    private let closeButton : UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(systemName: "xmark"), for: .normal)
+        button.tintColor = .black
+        return button
+    }()
+    
+    private let tableView : UITableView = {
+        let tableView = UITableView()
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        return tableView
+    }()
     
     //Initalizers
     init(post : PostModel){
@@ -30,13 +52,25 @@ extension CommentsViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.addSubview(closeButton)
+        closeButton.addTarget(self, action: #selector(didTapCloseButton), for: .touchUpInside)
         view.backgroundColor = .white
+        
         fetchPostComments()
+        
+        view.addSubview(tableView)
+        tableView.dataSource = self
+        tableView.delegate = self
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        closeButton.frame = CGRect(x: view.width - 45, y: 10, width: 35, height: 35)
+        tableView.frame = CGRect(
+            x: 0,
+            y: closeButton.bottom + 10,
+            width: view.width,
+            height: view.width)
     }
 }
 
@@ -44,7 +78,30 @@ extension CommentsViewController {
 // MARK: - Private Methods
 extension CommentsViewController {
     
-    func fetchPostComments(){
-        
+    @objc func didTapCloseButton(){
+        delegate?.didTapCloseForComments(with: self)
     }
+    
+    func fetchPostComments(){
+        //Get the Mock Comments for Now
+        comments = PostComment.mockComments()
+    }
+}
+
+
+// MARK: - UITableViewDelegate, UITableViewDataSource Methods
+extension CommentsViewController : UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return comments.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let comment = comments[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = comment.text
+        
+        return cell
+    }
+    
+    
 }

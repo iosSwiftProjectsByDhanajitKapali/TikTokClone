@@ -235,6 +235,7 @@ extension HomeViewController : PostViewControllerDelegate {
         
         //Present the Comments tray
         let vc = CommentsViewController(post: post)
+        vc.delegate = self
         addChild(vc)
         vc.didMove(toParent: self)
         view.addSubview(vc.view)
@@ -254,5 +255,38 @@ extension HomeViewController : PostViewControllerDelegate {
             )
         }
     }
+}
 
+
+// MARK: - CommentsViewControllerDelegate Methods
+extension HomeViewController : CommentsViewControllerDelegate {
+    func didTapCloseForComments(with viewController: CommentsViewController) {
+        //Animate Hide the Comments Tray
+        let frame = viewController.view.frame
+        UIView.animate(withDuration: 0.2) {
+            viewController.view.frame = CGRect(
+                x: 0,
+                y: self.view.height,
+                width: frame.width,
+                height: frame.height
+            )
+        } completion: { [weak self] done in
+            if done {
+                DispatchQueue.main.async {
+                    //and Remove the tray as a child
+                    viewController.view.removeFromSuperview()
+                    viewController.removeFromParent()
+                    
+                    //Also Enable the Scolling
+                    self?.horizontalScrollView.isScrollEnabled = true
+                    self?.followingPageViewController.dataSource = self
+                    self?.forYouPageViewController.dataSource = self
+                }
+                
+            }
+        }
+
+        
+        
+    }
 }

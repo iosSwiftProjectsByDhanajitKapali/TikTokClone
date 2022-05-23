@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0149CB3D283C0E8B00707CBE /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149CB3C283C0E8B00707CBE /* CommentsViewController.swift */; };
+		0149CB3F283C1B8600707CBE /* PostComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149CB3E283C1B8600707CBE /* PostComment.swift */; };
+		0149CB41283C1BB100707CBE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149CB40283C1BB100707CBE /* User.swift */; };
 		01D66C50283B9EE8005B6462 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D66C4F283B9EE8005B6462 /* UIViewExtension.swift */; };
 		01D66C52283BA5A5005B6462 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D66C51283BA5A5005B6462 /* PostModel.swift */; };
 		01D91FCD28355A0500AA190F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D91FCC28355A0500AA190F /* AppDelegate.swift */; };
@@ -36,6 +38,8 @@
 
 /* Begin PBXFileReference section */
 		0149CB3C283C0E8B00707CBE /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		0149CB3E283C1B8600707CBE /* PostComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostComment.swift; sourceTree = "<group>"; };
+		0149CB40283C1BB100707CBE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		01D66C4F283B9EE8005B6462 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		01D66C51283BA5A5005B6462 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		01D91FC928355A0500AA190F /* TikTokClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TikTokClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,6 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				01D66C51283BA5A5005B6462 /* PostModel.swift */,
+				0149CB3E283C1B8600707CBE /* PostComment.swift */,
+				0149CB40283C1BB100707CBE /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -383,12 +389,14 @@
 				01D91FF9283564E300AA190F /* TabBarViewController.swift in Sources */,
 				01D91FEB2835642800AA190F /* CameraViewController.swift in Sources */,
 				01D91FD128355A0500AA190F /* HomeViewController.swift in Sources */,
+				0149CB3F283C1B8600707CBE /* PostComment.swift in Sources */,
 				01D66C50283B9EE8005B6462 /* UIViewExtension.swift in Sources */,
 				01D91FED2835643600AA190F /* NotificationsViewController.swift in Sources */,
 				01D91FF32835649800AA190F /* SignInViewController.swift in Sources */,
 				01D91FEF2835644F00AA190F /* ProfileViewController.swift in Sources */,
 				01D91FCD28355A0500AA190F /* AppDelegate.swift in Sources */,
 				01D91FCF28355A0500AA190F /* SceneDelegate.swift in Sources */,
+				0149CB41283C1BB100707CBE /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
