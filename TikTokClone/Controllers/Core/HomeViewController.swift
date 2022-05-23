@@ -20,13 +20,13 @@ class HomeViewController: UIViewController {
         
     }()
     
-    private let forYouPagingController = UIPageViewController(
+    private let forYouPageViewController = UIPageViewController(
         transitionStyle: .scroll,
         navigationOrientation: .vertical,
         options: [:]
     )
     
-    private let followingPagingController = UIPageViewController(
+    private let followingPageViewController = UIPageViewController(
         transitionStyle: .scroll,
         navigationOrientation: .vertical,
         options: [:]
@@ -92,25 +92,27 @@ private extension HomeViewController{
             return
         }
         
-        followingPagingController.setViewControllers(
-            [PostViewController(model: model)],
+        let vc = PostViewController(model: model)
+        vc.delegate = self
+        followingPageViewController.setViewControllers(
+            [vc],
             direction: .forward,
             animated: true,
             completion: nil
         )
         
-        followingPagingController.dataSource = self
+        followingPageViewController.dataSource = self
         
         //add pagingController as a child
-        horizontalScrollView.addSubview(followingPagingController.view)
-        followingPagingController.view.frame = CGRect(
+        horizontalScrollView.addSubview(followingPageViewController.view)
+        followingPageViewController.view.frame = CGRect(
             x: 0,
             y: 0,
             width: horizontalScrollView.width,
             height: horizontalScrollView.height
         )
-        addChild(followingPagingController)
-        followingPagingController.didMove(toParent: self)
+        addChild(followingPageViewController)
+        followingPageViewController.didMove(toParent: self)
     }
     
     func setUpForYouFeed(){
@@ -118,25 +120,27 @@ private extension HomeViewController{
             return
         }
         
-        forYouPagingController.setViewControllers(
-            [PostViewController(model: model)],
+        let vc = PostViewController(model: model)
+        vc.delegate = self
+        forYouPageViewController.setViewControllers(
+            [vc],
             direction: .forward,
             animated: true,
             completion: nil
         )
         
-        forYouPagingController.dataSource = self
+        forYouPageViewController.dataSource = self
         
         //add pagingController as a child
-        horizontalScrollView.addSubview(forYouPagingController.view)
-        forYouPagingController.view.frame = CGRect(
+        horizontalScrollView.addSubview(forYouPageViewController.view)
+        forYouPageViewController.view.frame = CGRect(
             x: view.width,
             y: 0,
             width: horizontalScrollView.width,
             height: horizontalScrollView.height
         )
-        addChild(forYouPagingController)
-        forYouPagingController.didMove(toParent: self)
+        addChild(forYouPageViewController)
+        forYouPageViewController.didMove(toParent: self)
     }
 }
 
@@ -162,6 +166,7 @@ extension HomeViewController : UIPageViewControllerDataSource{
         let priorPostIndex = currentPostindex-1
         let model = currentPosts[priorPostIndex]
         let vc = PostViewController(model: model)
+        vc.delegate = self
         return vc
         
     }
@@ -185,6 +190,7 @@ extension HomeViewController : UIPageViewControllerDataSource{
         let nextPostIndex = currentPostindex + 1
         let model = currentPosts[nextPostIndex]
         let vc = PostViewController(model: model)
+        vc.delegate = self
         return vc
         
     }
@@ -211,4 +217,42 @@ extension HomeViewController : UIScrollViewDelegate {
             segmentedControl.selectedSegmentIndex = 1
         }
     }
+}
+
+
+// MARK: - PostViewControllerDelegate Methods
+extension HomeViewController : PostViewControllerDelegate {
+    func postViewController(_ vc: PostViewController, didTapCommentsButtonFor post: PostModel) {
+        //Block Scrolling b/w posts when comments section is open
+        horizontalScrollView.isScrollEnabled = false
+        if horizontalScrollView.contentOffset.x == 0{
+            //Following Section
+            followingPageViewController.dataSource = nil
+        }else{
+            //For-You Section
+            forYouPageViewController.dataSource = nil
+        }
+        
+        //Present the Comments tray
+        let vc = CommentsViewController(post: post)
+        addChild(vc)
+        vc.didMove(toParent: self)
+        view.addSubview(vc.view)
+        let frame : CGRect = CGRect(
+            x: 0,
+            y: view.height,
+            width: view.width,
+            height: (view.height * 0.75)
+        )
+        vc.view.frame = frame
+        UIView.animate(withDuration: 0.2) {
+            vc.view.frame = CGRect(
+                x: 0,
+                y: self.view.height - frame.height,
+                width: frame.width,
+                height: frame.height
+            )
+        }
+    }
+
 }

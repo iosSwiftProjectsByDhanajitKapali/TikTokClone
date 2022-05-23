@@ -7,8 +7,14 @@
 
 import UIKit
 
+protocol PostViewControllerDelegate : AnyObject {
+    func postViewController(_ vc : PostViewController, didTapCommentsButtonFor post : PostModel)
+}
+
 class PostViewController: UIViewController {
 
+    weak var delegate : PostViewControllerDelegate?
+    
     var model : PostModel
     
     // MARK: - UI Components
@@ -120,7 +126,10 @@ private extension PostViewController{
     }
     
     @objc func didTapCommentButton(){
+        delegate?.postViewController(self, didTapCommentsButtonFor: model)
         
+        //Block Scrolling to other posts when comments section in open
+        //(parent as? UIPageViewController)?.view.isUserInteractionEnabled = false
     }
     
     @objc func didTapShareButton(){

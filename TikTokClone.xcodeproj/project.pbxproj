@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0149CB3D283C0E8B00707CBE /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149CB3C283C0E8B00707CBE /* CommentsViewController.swift */; };
 		01D66C50283B9EE8005B6462 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D66C4F283B9EE8005B6462 /* UIViewExtension.swift */; };
 		01D66C52283BA5A5005B6462 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D66C51283BA5A5005B6462 /* PostModel.swift */; };
 		01D91FCD28355A0500AA190F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D91FCC28355A0500AA190F /* AppDelegate.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0149CB3C283C0E8B00707CBE /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		01D66C4F283B9EE8005B6462 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		01D66C51283BA5A5005B6462 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		01D91FC928355A0500AA190F /* TikTokClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TikTokClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -194,6 +196,7 @@
 				01D91FF4283564A200AA190F /* SignOutViewController.swift */,
 				01D91FF6283564AD00AA190F /* SettingsViewController.swift */,
 				01D91FFC2835653300AA190F /* PostViewController.swift */,
+				0149CB3C283C0E8B00707CBE /* CommentsViewController.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 			files = (
 				01D92007283565D300AA190F /* HapticsManager.swift in Sources */,
 				01D66C52283BA5A5005B6462 /* PostModel.swift in Sources */,
+				0149CB3D283C0E8B00707CBE /* CommentsViewController.swift in Sources */,
 				01D92005283565B400AA190F /* StorageManager.swift in Sources */,
 				01D92003283565A500AA190F /* DatabaseManager.swift in Sources */,
 				01D91FE92835641500AA190F /* ExploreViewController.swift in Sources */,
