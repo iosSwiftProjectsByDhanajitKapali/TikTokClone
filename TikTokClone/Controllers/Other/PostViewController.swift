@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 protocol PostViewControllerDelegate : AnyObject {
     func postViewController(_ vc : PostViewController, didTapCommentsButtonFor post : PostModel)
@@ -17,6 +18,9 @@ class PostViewController: UIViewController {
     weak var delegate : PostViewControllerDelegate?
     
     var model : PostModel
+    
+    // MARK: - Private Data Members
+    var player : AVPlayer?
     
     // MARK: - UI Components
     private let profileButton : UIButton = {
@@ -78,7 +82,8 @@ class PostViewController: UIViewController {
 extension PostViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        configureVideo()
+        
         let colors : [UIColor] = [
             .red, .green, .orange, .blue, .white, .systemPink
         ]
@@ -89,6 +94,7 @@ extension PostViewController {
         view.addSubview(captionLabel)
         view.addSubview(profileButton)
         profileButton.addTarget(self, action: #selector(didTapProfileButton), for: .touchUpInside)
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -126,6 +132,22 @@ extension PostViewController {
 
 // MARK: - Private Methods
 private extension PostViewController{
+    
+    func configureVideo()  {
+        guard let path = Bundle.main.path(forResource: "sampleVideo", ofType: "mp4") else {
+            return
+        }
+        
+        let url = URL(fileURLWithPath: path)
+        player = AVPlayer(url: url)
+        
+        let playerLayer = AVPlayerLayer(player: player)
+        playerLayer.frame = view.bounds
+        playerLayer.videoGravity = .resizeAspectFill
+        view.layer.addSublayer(playerLayer)
+        player?.volume = 1.0
+        player?.play()
+    }
     
     @objc func didTapProfileButton(){
         delegate?.postViewController(self, didTapProfileButtonFor: model)
