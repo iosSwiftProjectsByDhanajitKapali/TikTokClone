@@ -14,6 +14,9 @@
 		0149CB45283C36EA00707CBE /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149CB44283C36EA00707CBE /* DateFormatterExtension.swift */; };
 		0149CB47283C376200707CBE /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149CB46283C376200707CBE /* StringExtension.swift */; };
 		0149CB49283CEC2300707CBE /* sampleVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 0149CB48283CEC2300707CBE /* sampleVideo.mp4 */; };
+		0149CB4B283D26C000707CBE /* ExploreSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149CB4A283D26C000707CBE /* ExploreSectionType.swift */; };
+		0149CB4D283D26D700707CBE /* ExploreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149CB4C283D26D700707CBE /* ExploreCell.swift */; };
+		0149CB4F283D26F600707CBE /* ExploreSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149CB4E283D26F600707CBE /* ExploreSection.swift */; };
 		01D66C50283B9EE8005B6462 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D66C4F283B9EE8005B6462 /* UIViewExtension.swift */; };
 		01D66C52283BA5A5005B6462 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D66C51283BA5A5005B6462 /* PostModel.swift */; };
 		01D91FCD28355A0500AA190F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D91FCC28355A0500AA190F /* AppDelegate.swift */; };
@@ -48,6 +51,9 @@
 		0149CB44283C36EA00707CBE /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
 		0149CB46283C376200707CBE /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		0149CB48283CEC2300707CBE /* sampleVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sampleVideo.mp4; sourceTree = "<group>"; };
+		0149CB4A283D26C000707CBE /* ExploreSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreSectionType.swift; sourceTree = "<group>"; };
+		0149CB4C283D26D700707CBE /* ExploreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCell.swift; sourceTree = "<group>"; };
+		0149CB4E283D26F600707CBE /* ExploreSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreSection.swift; sourceTree = "<group>"; };
 		01D66C4F283B9EE8005B6462 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		01D66C51283BA5A5005B6462 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		01D91FC928355A0500AA190F /* TikTokClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TikTokClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +175,9 @@
 				01D66C51283BA5A5005B6462 /* PostModel.swift */,
 				0149CB3E283C1B8600707CBE /* PostComment.swift */,
 				0149CB40283C1BB100707CBE /* User.swift */,
+				0149CB4A283D26C000707CBE /* ExploreSectionType.swift */,
+				0149CB4C283D26D700707CBE /* ExploreCell.swift */,
+				0149CB4E283D26F600707CBE /* ExploreSection.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -407,12 +416,15 @@
 				01D66C50283B9EE8005B6462 /* UIViewExtension.swift in Sources */,
 				01D91FED2835643600AA190F /* NotificationsViewController.swift in Sources */,
 				01D91FF32835649800AA190F /* SignInViewController.swift in Sources */,
+				0149CB4B283D26C000707CBE /* ExploreSectionType.swift in Sources */,
 				0149CB43283C337900707CBE /* CommentTableViewCell.swift in Sources */,
 				01D91FEF2835644F00AA190F /* ProfileViewController.swift in Sources */,
 				01D91FCD28355A0500AA190F /* AppDelegate.swift in Sources */,
 				01D91FCF28355A0500AA190F /* SceneDelegate.swift in Sources */,
 				0149CB47283C376200707CBE /* StringExtension.swift in Sources */,
 				0149CB41283C1BB100707CBE /* User.swift in Sources */,
+				0149CB4D283D26D700707CBE /* ExploreCell.swift in Sources */,
+				0149CB4F283D26F600707CBE /* ExploreSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

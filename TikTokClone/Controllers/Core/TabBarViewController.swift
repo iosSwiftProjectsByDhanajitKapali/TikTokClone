@@ -35,7 +35,7 @@ private extension TabBarViewController{
         let profile = ProfileViewController(user: User(userName: "self", profilePictureURL: nil, identifier: "abc123"))
         
         //home.title = "Home"
-        explore.title = "Explore"
+        //explore.title = "Explore"
         notifications.title = "Notifications"
         profile.title = "Profile"
         
