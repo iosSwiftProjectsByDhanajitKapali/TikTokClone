@@ -9,6 +9,7 @@ import UIKit
 
 protocol PostViewControllerDelegate : AnyObject {
     func postViewController(_ vc : PostViewController, didTapCommentsButtonFor post : PostModel)
+    func postViewController(_ vc : PostViewController, didTapProfileButtonFor post : PostModel)
 }
 
 class PostViewController: UIViewController {
@@ -18,6 +19,15 @@ class PostViewController: UIViewController {
     var model : PostModel
     
     // MARK: - UI Components
+    private let profileButton : UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(systemName: "person.circle"), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.layer.masksToBounds = true
+        button.tintColor = .white
+        return button
+    }()
+    
     private let likeButton : UIButton = {
         let button = UIButton()
         button.setBackgroundImage(UIImage(systemName: "heart.fill"), for: .normal)
@@ -77,6 +87,8 @@ extension PostViewController {
         setUpButtons()
         setUpDoubleTapToLike()
         view.addSubview(captionLabel)
+        view.addSubview(profileButton)
+        profileButton.addTarget(self, action: #selector(didTapProfileButton), for: .touchUpInside)
     }
     
     override func viewDidLayoutSubviews() {
@@ -101,12 +113,23 @@ extension PostViewController {
             width: view.width - size - 25,
             height: labelSize.height
         )
+        profileButton.frame = CGRect(
+            x: likeButton.left,
+            y: likeButton.top - 10 - size,
+            width: size,
+            height: size
+        )
+        profileButton.layer.cornerRadius = size/2
     }
 }
 
 
 // MARK: - Private Methods
 private extension PostViewController{
+    
+    @objc func didTapProfileButton(){
+        delegate?.postViewController(self, didTapProfileButtonFor: model)
+    }
     
     func setUpButtons(){
         view.addSubview(likeButton)
