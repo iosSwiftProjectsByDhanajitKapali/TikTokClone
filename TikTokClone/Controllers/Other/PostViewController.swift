@@ -20,7 +20,8 @@ class PostViewController: UIViewController {
     var model : PostModel
     
     // MARK: - Private Data Members
-    var player : AVPlayer?
+    private var player : AVPlayer?
+    private var playerDidFinishObserver : NSObjectProtocol?
     
     // MARK: - UI Components
     private let profileButton : UIButton = {
@@ -147,6 +148,20 @@ private extension PostViewController{
         view.layer.addSublayer(playerLayer)
         player?.volume = 1.0
         player?.play()
+        
+        //Replay the video
+        guard let player = player else{
+            return
+        }
+        
+        playerDidFinishObserver = NotificationCenter.default.addObserver(
+            forName: .AVPlayerItemDidPlayToEndTime,
+            object: player.currentItem,
+            queue: .main,
+            using: { _ in
+                player.seek(to: .zero)
+                player.play()
+            })
     }
     
     @objc func didTapProfileButton(){
