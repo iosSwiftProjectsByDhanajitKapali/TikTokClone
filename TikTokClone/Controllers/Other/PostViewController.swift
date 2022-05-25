@@ -146,7 +146,7 @@ private extension PostViewController{
         playerLayer.frame = view.bounds
         playerLayer.videoGravity = .resizeAspectFill
         view.layer.addSublayer(playerLayer)
-        player?.volume = 1.0
+        player?.volume = 0
         player?.play()
         
         //Replay the video

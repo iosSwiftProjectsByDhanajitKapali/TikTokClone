@@ -63,12 +63,175 @@ private extension ExploreViewController {
             cells.append(cell)
         }
         
+        //Banner
         sections.append(
             ExploreSection(
                 type: .banners,
                 cells: cells
             )
         )
+        
+        //Trending Posts
+        sections.append(ExploreSection(type: .trendingPosts, cells: [
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            }))
+        ]))
+        
+        //Users
+        sections.append(ExploreSection(type: .users, cells: [
+            .user(viewModel: ExploreUserViewModel(profilePictureURL: nil, userName: "", followerCount: 0, handler: {
+            })),
+            .user(viewModel: ExploreUserViewModel(profilePictureURL: nil, userName: "", followerCount: 0, handler: {
+            })),
+            .user(viewModel: ExploreUserViewModel(profilePictureURL: nil, userName: "", followerCount: 0, handler: {
+            })),
+            .user(viewModel: ExploreUserViewModel(profilePictureURL: nil, userName: "", followerCount: 0, handler: {
+            })),
+            .user(viewModel: ExploreUserViewModel(profilePictureURL: nil, userName: "", followerCount: 0, handler: {
+            })),
+            .user(viewModel: ExploreUserViewModel(profilePictureURL: nil, userName: "", followerCount: 0, handler: {
+            })),
+            .user(viewModel: ExploreUserViewModel(profilePictureURL: nil, userName: "", followerCount: 0, handler: {
+            })),
+            .user(viewModel: ExploreUserViewModel(profilePictureURL: nil, userName: "", followerCount: 0, handler: {
+            })),
+            .user(viewModel: ExploreUserViewModel(profilePictureURL: nil, userName: "", followerCount: 0, handler: {
+            })),
+            .user(viewModel: ExploreUserViewModel(profilePictureURL: nil, userName: "", followerCount: 0, handler: {
+            })),
+            .user(viewModel: ExploreUserViewModel(profilePictureURL: nil, userName: "", followerCount: 0, handler: {
+            })),
+            .user(viewModel: ExploreUserViewModel(profilePictureURL: nil, userName: "", followerCount: 0, handler: {
+            }))
+        ]))
+        
+        //Trending HashTags
+        sections.append(ExploreSection(type: .trendingHashtags, cells: [
+            .hashtag(viewModel: ExploreHashtagViewModel(text: "", icon: nil, count: 0, handler: {
+            })),
+            .hashtag(viewModel: ExploreHashtagViewModel(text: "", icon: nil, count: 0, handler: {
+            })),
+            .hashtag(viewModel: ExploreHashtagViewModel(text: "", icon: nil, count: 0, handler: {
+            })),
+            .hashtag(viewModel: ExploreHashtagViewModel(text: "", icon: nil, count: 0, handler: {
+            })),
+            .hashtag(viewModel: ExploreHashtagViewModel(text: "", icon: nil, count: 0, handler: {
+            })),
+            .hashtag(viewModel: ExploreHashtagViewModel(text: "", icon: nil, count: 0, handler: {
+            })),
+            .hashtag(viewModel: ExploreHashtagViewModel(text: "", icon: nil, count: 0, handler: {
+            })),
+            .hashtag(viewModel: ExploreHashtagViewModel(text: "", icon: nil, count: 0, handler: {
+            })),
+            .hashtag(viewModel: ExploreHashtagViewModel(text: "", icon: nil, count: 0, handler: {
+            })),
+            .hashtag(viewModel: ExploreHashtagViewModel(text: "", icon: nil, count: 0, handler: {
+            })),
+            .hashtag(viewModel: ExploreHashtagViewModel(text: "", icon: nil, count: 0, handler: {
+            })),
+            .hashtag(viewModel: ExploreHashtagViewModel(text: "", icon: nil, count: 0, handler: {
+            }))
+        ]))
+        
+        //Recommended
+        sections.append(ExploreSection(type: .recommended, cells: [
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            }))
+        ]))
+        
+        //Popular
+        sections.append(ExploreSection(type: .popular, cells: [
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            }))
+        ]))
+        
+        //New/Recent
+        sections.append(ExploreSection(type: .new, cells: [
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            })),
+            .post(viewModel: ExplorePostViewModel(thumbnailImage: nil, caption: "", handler: {
+            }))
+        ]))
     }
     
     func setUpSearchBar(){
@@ -95,43 +258,142 @@ private extension ExploreViewController {
         
         switch sectionType {
         case .banners:
-            break
-        case .trendingPosts:
-            break
+            //Item
+            let item = NSCollectionLayoutItem(
+                layoutSize: NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(1),
+                    heightDimension: .fractionalHeight(1)
+                )
+            )
+            item.contentInsets = NSDirectionalEdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4)
+            
+            //Group
+            let group = NSCollectionLayoutGroup.horizontal(
+                layoutSize: NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(0.9),
+                    heightDimension: .absolute(200)
+                ),
+                subitems: [item]
+            )
+            
+            //Section Layout
+            let sectionLayout = NSCollectionLayoutSection(group: group)
+            sectionLayout.orthogonalScrollingBehavior = .groupPaging
+            return sectionLayout
+            
+            
         case .trendingHashtags:
-            break
+            //Item
+            let item = NSCollectionLayoutItem(
+                layoutSize: NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(1),
+                    heightDimension: .fractionalHeight(1)
+                )
+            )
+            item.contentInsets = NSDirectionalEdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4)
+            
+            //Group
+            let verticalGroup = NSCollectionLayoutGroup.vertical(
+                layoutSize: NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(0.8),
+                    heightDimension: .absolute(120)
+                ),
+                subitem: item,
+                count: 2
+            )
+            
+            
+            //Section Layout
+            let sectionLayout = NSCollectionLayoutSection(group: verticalGroup)
+            sectionLayout.orthogonalScrollingBehavior = .groupPaging
+            return sectionLayout
+            
+            
         case .users:
-            break
-        case .recommended:
-            break
-        case .popular:
-            break
-        case .new:
-            break
+            //Item
+            let item = NSCollectionLayoutItem(
+                layoutSize: NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(1),
+                    heightDimension: .fractionalHeight(1)
+                )
+            )
+            item.contentInsets = NSDirectionalEdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4)
+            
+            //Group
+            let group = NSCollectionLayoutGroup.horizontal(
+                layoutSize: NSCollectionLayoutSize(
+                    widthDimension: .absolute(200),
+                    heightDimension: .absolute(200)
+                ),
+                subitems: [item]
+            )
+            
+            //Section Layout
+            let sectionLayout = NSCollectionLayoutSection(group: group)
+            sectionLayout.orthogonalScrollingBehavior = .continuous
+            return sectionLayout
+            
+            
+        case .trendingPosts, .recommended, .new:
+            //Item
+            let item = NSCollectionLayoutItem(
+                layoutSize: NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(1),
+                    heightDimension: .fractionalHeight(1)
+                )
+            )
+            item.contentInsets = NSDirectionalEdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4)
+            
+            //Group
+            let verticalGroup = NSCollectionLayoutGroup.vertical(
+                layoutSize: NSCollectionLayoutSize(
+                    widthDimension: .absolute(100),
+                    heightDimension: .absolute(240)
+                ),
+                subitem: item,
+                count: 2
+            )
+            
+            let group = NSCollectionLayoutGroup.vertical(
+                layoutSize: NSCollectionLayoutSize(
+                    widthDimension: .absolute(100),
+                    heightDimension: .absolute(240)
+                ),
+                subitems: [verticalGroup]
+            )
+            
+            //Section Layout
+            let sectionLayout = NSCollectionLayoutSection(group: group)
+            sectionLayout.orthogonalScrollingBehavior = .continuous
+            return sectionLayout
+        
+        case .popular :
+            //Item
+            let item = NSCollectionLayoutItem(
+                layoutSize: NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(1),
+                    heightDimension: .fractionalHeight(1)
+                )
+            )
+            item.contentInsets = NSDirectionalEdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4)
+            
+            //Group
+            let group = NSCollectionLayoutGroup.horizontal(
+                layoutSize: NSCollectionLayoutSize(
+                    widthDimension: .absolute(110),
+                    heightDimension: .absolute(200)
+                ),
+                subitems: [item]
+            )
+            
+            //Section Layout
+            let sectionLayout = NSCollectionLayoutSection(group: group)
+            sectionLayout.orthogonalScrollingBehavior = .continuous
+            return sectionLayout
+            
         }
         
-        //Item
-        let item = NSCollectionLayoutItem(
-            layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1),
-                heightDimension: .fractionalHeight(1)
-            )
-        )
-        item.contentInsets = NSDirectionalEdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4)
         
-        //Group
-        let group = NSCollectionLayoutGroup.horizontal(
-            layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(0.9),
-                heightDimension: .absolute(200)
-            ),
-            subitems: [item]
-        )
-        
-        //Section Layout
-        let sectionLayout = NSCollectionLayoutSection(group: group)
-        sectionLayout.orthogonalScrollingBehavior = .groupPaging
-        return sectionLayout
     }
 }
 
@@ -149,6 +411,18 @@ extension ExploreViewController : UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let model = sections[indexPath.section].cells[indexPath.row]
+        
+        switch model {
+        case .banner(let viewModel):
+            break
+        case .post(let viewModel):
+            break
+        case .hashtag( let viewModel):
+            break
+        case .user(let viewModel):
+            break
+        }
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         cell.backgroundColor = .red
         return cell
