@@ -49,85 +49,64 @@ private extension ExploreViewController {
     
     func configureModels() {
         //Mocking ExploreSection cells
-        var banners = [ExploreCell]()
-        for x in 0...100 {
-            let cell = ExploreCell.banner(
-                viewModel: ExploreBannerViewModel(
-                    image: UIImage(named: "sampleImage1"),
-                    title: "Foo",
-                    handler: {
-                        
-                    }
-                )
-            )
-            banners.append(cell)
-        }
-        
+
         //Banner
         sections.append(
             ExploreSection(
                 type: .banners,
-                cells: banners
+                cells: ExploreManager.shared.getExploreBanners().compactMap({
+                    return ExploreCell.banner(viewModel: $0)
+                })
             )
         )
-//        let temp = ExploreManager.shared.getExploreBanners()
-//        sections.append(
-//            ExploreSection(
-//                type: .banners,
-//                cells: temp.compactMap({
-//                    return ExploreCell.banner(viewModel: $0)
-//                })
-//            )
-//        )
         
-        
-        var posts = [ExploreCell]()
-        for _ in 0...40 {
-            posts.append(
-                ExploreCell.post(viewModel: ExplorePostViewModel(thumbnailImage: UIImage(named: "sampleImage"), caption: "This is an awesome Post and a long caption", handler: {
-                    
-                }))
-            )
-        }
         //Trending Posts
-        sections.append(ExploreSection(type: .trendingPosts, cells: posts ))
+        sections.append(ExploreSection(
+            type: .trendingPosts,
+            cells: ExploreManager.shared.getExploreTrendingPosts().compactMap({
+                return ExploreCell.post(viewModel: $0)
+            })
+        ))
         
         //Users
-        var users = [ExploreCell]()
-        for _ in 0...40 {
-            users.append(ExploreCell.user(viewModel: ExploreUserViewModel(profilePictureURL: nil, userName: "Kayne west the great personality", followerCount: 20, handler: {
-                
-            }))
-            )
-        }
-        sections.append(ExploreSection(type: .users, cells: users))
+        sections.append(ExploreSection(
+            type: .users,
+            cells: ExploreManager.shared.getExploreCreators().compactMap({
+                return ExploreCell.user(viewModel: $0)
+            })
+        ))
         
         //Trending HashTags
-        sections.append(ExploreSection(type: .trendingHashtags, cells: [
-            .hashtag(viewModel: ExploreHashtagViewModel(text: "#forYou", icon: UIImage(systemName: "bell"), count: 0, handler: {
-            })),
-            .hashtag(viewModel: ExploreHashtagViewModel(text: "#forYou", icon: UIImage(systemName: "bell"), count: 0, handler: {
-            })),
-            .hashtag(viewModel: ExploreHashtagViewModel(text: "#forYou", icon: UIImage(systemName: "bell"), count: 0, handler: {
-            })),
-            .hashtag(viewModel: ExploreHashtagViewModel(text: "#forYou", icon: UIImage(systemName: "bell"), count: 0, handler: {
-            })),
-            .hashtag(viewModel: ExploreHashtagViewModel(text: "#forYou", icon: UIImage(systemName: "bell"), count: 0, handler: {
-            })),
-            .hashtag(viewModel: ExploreHashtagViewModel(text: "#forYou", icon: UIImage(systemName: "bell"), count: 0, handler: {
-            })),
-            .hashtag(viewModel: ExploreHashtagViewModel(text: "#forYou", icon: UIImage(systemName: "bell"), count: 0, handler: {
-            }))
-        ]))
+        sections.append(ExploreSection(
+            type: .trendingHashtags,
+            cells: ExploreManager.shared.getExploreHashtags().compactMap({
+                return ExploreCell.hashtag(viewModel: $0)
+            })
+        ))
         
-        //Recommended
-        sections.append(ExploreSection(type: .recommended, cells: posts))
+//        //Recommended
+//        sections.append(ExploreSection(
+//            type: .recommended,
+//            cells: ExploreManager.shared.getExplorePopularPosts().compactMap({
+//                return ExploreCell.post(viewModel: $0)
+//            })
+//        ))
         
         //Popular
-        sections.append(ExploreSection(type: .popular, cells: posts))
+        sections.append(ExploreSection(
+            type: .popular,
+            cells: ExploreManager.shared.getExplorePopularPosts().compactMap({
+                return ExploreCell.post(viewModel: $0)
+            })
+        ))
         
         //New/Recent
-        sections.append(ExploreSection(type: .new, cells: posts))
+        sections.append(ExploreSection(
+            type: .new,
+            cells: ExploreManager.shared.getExploreRecentPosts().compactMap({
+                return ExploreCell.post(viewModel: $0)
+            })
+        ))
     }
     
     func setUpSearchBar(){

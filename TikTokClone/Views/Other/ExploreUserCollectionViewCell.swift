@@ -71,8 +71,8 @@ class ExploreUserCollectionViewCell: UICollectionViewCell {
     // MARK: - Public Methods
     func configure(with viewModel : ExploreUserViewModel){
         userNameLabel.text = viewModel.userName
-        if let url = viewModel.profilePictureURL {
-            profilePicture.image = UIImage(systemName: "person.circle")
+        if let pic = viewModel.profilePicture {
+            profilePicture.image = pic
         }
         else {
             profilePicture.tintColor = .systemBlue
