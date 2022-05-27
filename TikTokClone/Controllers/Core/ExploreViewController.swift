@@ -64,10 +64,13 @@ private extension ExploreViewController {
         }
         
         //Banner
+        let temp = ExploreManager.shared.getExploreBanners()
         sections.append(
             ExploreSection(
                 type: .banners,
-                cells: cells
+                cells: temp.compactMap({
+                    return ExploreCell.banner(viewModel: $0)
+                })
             )
         )
         
