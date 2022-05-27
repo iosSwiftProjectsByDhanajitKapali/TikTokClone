@@ -104,29 +104,19 @@ private extension ExploreViewController {
         
         //Trending HashTags
         sections.append(ExploreSection(type: .trendingHashtags, cells: [
-            .hashtag(viewModel: ExploreHashtagViewModel(text: "", icon: nil, count: 0, handler: {
+            .hashtag(viewModel: ExploreHashtagViewModel(text: "#forYou", icon: UIImage(systemName: "bell"), count: 0, handler: {
             })),
-            .hashtag(viewModel: ExploreHashtagViewModel(text: "", icon: nil, count: 0, handler: {
+            .hashtag(viewModel: ExploreHashtagViewModel(text: "#forYou", icon: UIImage(systemName: "bell"), count: 0, handler: {
             })),
-            .hashtag(viewModel: ExploreHashtagViewModel(text: "", icon: nil, count: 0, handler: {
+            .hashtag(viewModel: ExploreHashtagViewModel(text: "#forYou", icon: UIImage(systemName: "bell"), count: 0, handler: {
             })),
-            .hashtag(viewModel: ExploreHashtagViewModel(text: "", icon: nil, count: 0, handler: {
+            .hashtag(viewModel: ExploreHashtagViewModel(text: "#forYou", icon: UIImage(systemName: "bell"), count: 0, handler: {
             })),
-            .hashtag(viewModel: ExploreHashtagViewModel(text: "", icon: nil, count: 0, handler: {
+            .hashtag(viewModel: ExploreHashtagViewModel(text: "#forYou", icon: UIImage(systemName: "bell"), count: 0, handler: {
             })),
-            .hashtag(viewModel: ExploreHashtagViewModel(text: "", icon: nil, count: 0, handler: {
+            .hashtag(viewModel: ExploreHashtagViewModel(text: "#forYou", icon: UIImage(systemName: "bell"), count: 0, handler: {
             })),
-            .hashtag(viewModel: ExploreHashtagViewModel(text: "", icon: nil, count: 0, handler: {
-            })),
-            .hashtag(viewModel: ExploreHashtagViewModel(text: "", icon: nil, count: 0, handler: {
-            })),
-            .hashtag(viewModel: ExploreHashtagViewModel(text: "", icon: nil, count: 0, handler: {
-            })),
-            .hashtag(viewModel: ExploreHashtagViewModel(text: "", icon: nil, count: 0, handler: {
-            })),
-            .hashtag(viewModel: ExploreHashtagViewModel(text: "", icon: nil, count: 0, handler: {
-            })),
-            .hashtag(viewModel: ExploreHashtagViewModel(text: "", icon: nil, count: 0, handler: {
+            .hashtag(viewModel: ExploreHashtagViewModel(text: "#forYou", icon: UIImage(systemName: "bell"), count: 0, handler: {
             }))
         ]))
         
@@ -177,7 +167,7 @@ private extension ExploreViewController {
             forCellWithReuseIdentifier: ExploreHashtagCollectionViewCell.identifier
         )
         
-        
+        collectionView.backgroundColor = .systemBackground
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -330,8 +320,8 @@ private extension ExploreViewController {
 }
 
     
-// MARK: - UICollectionViewDelegate, UICollectionViewDataSource Methods
-extension ExploreViewController : UICollectionViewDelegate, UICollectionViewDataSource {
+// MARK: - UICollectionViewDataSource Methods
+extension ExploreViewController : UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return sections.count
@@ -375,6 +365,7 @@ extension ExploreViewController : UICollectionViewDelegate, UICollectionViewData
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
                 return cell
             }
+            cell.configure(with: viewModel)
             return cell
             
         case .user(let viewModel):
@@ -394,7 +385,30 @@ extension ExploreViewController : UICollectionViewDelegate, UICollectionViewData
 //        return cell
     }
     
+}
+
+
+// MARK: - UICollectionViewDelegate Methods
+extension ExploreViewController : UICollectionViewDelegate{
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        HapticsManager.shared.vibrateForSelection()
+        
+        let model = sections[indexPath.section].cells[indexPath.row]
+        
+        switch model {
+            
+        case .banner(viewModel: let viewModel):
+            break
+        case .post(viewModel: let viewModel):
+            break
+        case .hashtag(viewModel: let viewModel):
+            break
+        case .user(viewModel: let viewModel):
+            break
+        }
+    }
 }
 
 
