@@ -394,4 +394,18 @@ extension ExploreViewController : UICollectionViewDelegate{
 // MARK: - UISearchBarDelegate Methods
 extension ExploreViewController : UISearchBarDelegate{
     
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(didTapCancel))
+    }
+    
+    @objc func didTapCancel(){
+        navigationItem.rightBarButtonItem = nil
+        searchBar.text = nil
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        navigationItem.rightBarButtonItem = nil
+    }
 }
