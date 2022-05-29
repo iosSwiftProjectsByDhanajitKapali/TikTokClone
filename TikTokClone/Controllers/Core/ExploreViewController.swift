@@ -32,6 +32,8 @@ extension ExploreViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        
+        ExploreManager.shared.delegate = self
         configureModels()
         setUpSearchBar()
         setUpCollectionView()
@@ -379,13 +381,13 @@ extension ExploreViewController : UICollectionViewDelegate{
         switch model {
             
         case .banner(viewModel: let viewModel):
-            break
+            viewModel.handler()
         case .post(viewModel: let viewModel):
-            break
+            viewModel.handler()
         case .hashtag(viewModel: let viewModel):
-            break
+            viewModel.handler()
         case .user(viewModel: let viewModel):
-            break
+            viewModel.handler()
         }
     }
 }
@@ -408,4 +410,20 @@ extension ExploreViewController : UISearchBarDelegate{
         searchBar.resignFirstResponder()
         navigationItem.rightBarButtonItem = nil
     }
+}
+
+
+
+// MARK: - ExploreManagerDelegate Methods
+extension ExploreViewController : ExploreManagerDelegate {
+    func didTapHashtag(_ hashtag: String) {
+        searchBar.text = hashtag
+        searchBar.becomeFirstResponder()
+    }
+    
+    func pushViewController(_ vc: UIViewController) {
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
 }
