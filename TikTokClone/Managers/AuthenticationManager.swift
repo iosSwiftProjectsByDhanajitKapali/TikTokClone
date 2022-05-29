@@ -14,6 +14,10 @@ final class AuthManager{
     
     
     // MARK: - Public Methods
+    public var isSignIn : Bool {
+        return Auth.auth().currentUser != nil   //nil means signed-out
+    }
+    
     enum SignInMethod{
         case email
         case facebook
@@ -23,7 +27,13 @@ final class AuthManager{
         
     }
     
-    public func signOut(){
-        
+    public func signOut(completion : (Bool) -> Void){
+        do {
+            try Auth.auth().signOut()
+            completion(true)
+        } catch  {
+            print(error)
+            completion(false)
+        }
     }
 }

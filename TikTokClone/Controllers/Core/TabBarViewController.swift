@@ -9,7 +9,8 @@ import UIKit
 
 class TabBarViewController: UITabBarController {
 
-    
+    // MARK: - Private Data Members
+    private var signInPresented = false
     
 }
 
@@ -22,12 +23,32 @@ extension TabBarViewController{
         // Do any additional setup after loading the view.
         setUpControllers()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if !signInPresented {
+            presentSignInIfNeeded()
+        }
+    }
 }
 
 // MARK: - Private Methods
 private extension TabBarViewController{
     
-    func setUpControllers(){
+    func presentSignInIfNeeded() {
+        if !AuthManager.shared.isSignIn {   //is user is not signedIn
+            signInPresented = true
+            let vc = SignInViewController()
+            vc.completion = { [weak self] in
+                self?.signInPresented = false
+            }
+            let navVC = UINavigationController(rootViewController: vc)
+            navVC.modalPresentationStyle = .fullScreen
+            present(navVC, animated: true)
+        }
+    }
+    
+    func setUpControllers() {
         let home = HomeViewController()
         let explore = ExploreViewController()
         let camera = CameraViewController()
