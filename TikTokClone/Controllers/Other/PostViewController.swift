@@ -102,7 +102,8 @@ extension PostViewController {
         super.viewDidLayoutSubviews()
         
         let size : CGFloat = 40
-        let yStart : CGFloat = view.height - (size * 4) - 30 - view.safeAreaInsets.bottom - (tabBarController?.tabBar.height ?? 0)
+        
+        let yStart : CGFloat = view.height - (size * 4) - 30 - view.safeAreaInsets.bottom
         for(index, button) in [likeButton, commentButton, shareButton].enumerated(){
             button.frame = CGRect(
                 x: view.width-size-20,
@@ -116,7 +117,7 @@ extension PostViewController {
         let labelSize = captionLabel.sizeThatFits(CGSize(width: view.width - size - 25, height: view.height))
         captionLabel.frame = CGRect(
             x: 5,
-            y: view.height - 10 - view.safeAreaInsets.bottom - labelSize.height - (tabBarController?.tabBar.height ?? 0),
+            y: view.height - 10 - view.safeAreaInsets.bottom - labelSize.height,
             width: view.width - size - 25,
             height: labelSize.height
         )

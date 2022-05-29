@@ -56,6 +56,7 @@ extension HomeViewController{
         view.addSubview(horizontalScrollView)
         
         setUpFeeds()
+        horizontalScrollView.contentInsetAdjustmentBehavior = .never
         horizontalScrollView.delegate = self
         horizontalScrollView.contentOffset = CGPoint(x: view.width, y: 0)
         setUpHeaderButtons()
