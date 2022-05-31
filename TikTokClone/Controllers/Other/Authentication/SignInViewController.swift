@@ -157,14 +157,22 @@ private extension SignInViewController {
             return
         }
         
-        AuthManager.shared.signIn(with: email, password: password) { loggedIn in
-            
-            if loggedIn {
-                //Dismiss login if loginIn is sucessfull
-            }else{
-                //Show error
+        AuthManager.shared.signIn(with: email, password: password) { result in
+            DispatchQueue.main.async { [weak self] in
+                switch result {
+                case .success(let email):
+                    break
+                case .failure(let error):
+                    let alert = UIAlertController(
+                        title: "Sign In Failed",
+                        message: "Please Enter a valid email/password to SignIn",
+                        preferredStyle: .alert
+                    )
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
+                    self?.present(alert, animated: true)
+                    self?.passwordField.text = nil
+                }
             }
-            
         }
     }
     

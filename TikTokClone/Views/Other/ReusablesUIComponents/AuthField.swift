@@ -59,5 +59,8 @@ class AuthField : UITextField {
         returnKeyType = .done
         autocorrectionType = .no
         autocapitalizationType = .none
+        if type == .email{
+            textContentType = .emailAddress
+        }
     }
 }
