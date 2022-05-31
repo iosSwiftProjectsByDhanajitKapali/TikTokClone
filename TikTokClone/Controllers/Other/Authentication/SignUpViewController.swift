@@ -1,21 +1,21 @@
 //
-//  SignOutViewController.swift
+//  SignUpViewController.swift
 //  TikTokClone
 //
-//  Created by unthinkable-mac-0025 on 18/05/22.
+//  Created by unthinkable-mac-0025 on 31/05/22.
 //
 
 import UIKit
 
-class SignOutViewController: UIViewController {
+class SignUpViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Sign Out"
         view.backgroundColor = .systemBackground
     }
     
 
 
 }
+

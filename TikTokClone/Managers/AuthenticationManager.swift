@@ -23,7 +23,7 @@ final class AuthManager{
         case facebook
         case google
     }
-    public func signIn(with method : SignInMethod){
+    public func signIn(with email : String, password : String, completion : @escaping (Bool) -> Void){
         
     }
     

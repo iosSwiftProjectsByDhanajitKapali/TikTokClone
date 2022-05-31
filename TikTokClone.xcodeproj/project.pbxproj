@@ -23,6 +23,9 @@
 		0149CB4B283D26C000707CBE /* ExploreSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149CB4A283D26C000707CBE /* ExploreSectionType.swift */; };
 		0149CB4D283D26D700707CBE /* ExploreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149CB4C283D26D700707CBE /* ExploreCell.swift */; };
 		0149CB4F283D26F600707CBE /* ExploreSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149CB4E283D26F600707CBE /* ExploreSection.swift */; };
+		017864132845F1F600470BDC /* AuthField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017864122845F1F600470BDC /* AuthField.swift */; };
+		017864152845F55700470BDC /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017864142845F55600470BDC /* AuthButton.swift */; };
+		017864172845FDCF00470BDC /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017864162845FDCF00470BDC /* SignUpViewController.swift */; };
 		01D66C50283B9EE8005B6462 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D66C4F283B9EE8005B6462 /* UIViewExtension.swift */; };
 		01D66C52283BA5A5005B6462 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D66C51283BA5A5005B6462 /* PostModel.swift */; };
 		01D91FCD28355A0500AA190F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D91FCC28355A0500AA190F /* AppDelegate.swift */; };
@@ -66,6 +69,9 @@
 		0149CB4A283D26C000707CBE /* ExploreSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreSectionType.swift; sourceTree = "<group>"; };
 		0149CB4C283D26D700707CBE /* ExploreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCell.swift; sourceTree = "<group>"; };
 		0149CB4E283D26F600707CBE /* ExploreSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreSection.swift; sourceTree = "<group>"; };
+		017864122845F1F600470BDC /* AuthField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthField.swift; sourceTree = "<group>"; };
+		017864142845F55600470BDC /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
+		017864162845FDCF00470BDC /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		01D66C4F283B9EE8005B6462 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		01D66C51283BA5A5005B6462 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		01D91FC928355A0500AA190F /* TikTokClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TikTokClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,11 +114,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		017864112845F1D200470BDC /* ReusablesUIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				017864122845F1F600470BDC /* AuthField.swift */,
+				017864142845F55600470BDC /* AuthButton.swift */,
+			);
+			path = ReusablesUIComponents;
+			sourceTree = "<group>";
+		};
 		0183D80D28441914006404B2 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
 				01D91FF4283564A200AA190F /* SignOutViewController.swift */,
 				01D91FF22835649800AA190F /* SignInViewController.swift */,
+				017864162845FDCF00470BDC /* SignUpViewController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -260,6 +276,7 @@
 		01D91FFB2835650A00AA190F /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				017864112845F1D200470BDC /* ReusablesUIComponents */,
 				0149CB42283C337900707CBE /* CommentTableViewCell.swift */,
 				01221E532840767B002F92E3 /* ExploreBannerCollectionViewCell.swift */,
 				01221E552840768F002F92E3 /* ExplorePostCollectionViewCell.swift */,
@@ -424,6 +441,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01D92007283565D300AA190F /* HapticsManager.swift in Sources */,
+				017864152845F55700470BDC /* AuthButton.swift in Sources */,
 				01D66C52283BA5A5005B6462 /* PostModel.swift in Sources */,
 				0149CB3D283C0E8B00707CBE /* CommentsViewController.swift in Sources */,
 				01D92005283565B400AA190F /* StorageManager.swift in Sources */,
@@ -455,8 +473,10 @@
 				0149CB47283C376200707CBE /* StringExtension.swift in Sources */,
 				0149CB41283C1BB100707CBE /* User.swift in Sources */,
 				01221E5228406B63002F92E3 /* ExploreManager.swift in Sources */,
+				017864132845F1F600470BDC /* AuthField.swift in Sources */,
 				0149CB4D283D26D700707CBE /* ExploreCell.swift in Sources */,
 				0149CB4F283D26F600707CBE /* ExploreSection.swift in Sources */,
+				017864172845FDCF00470BDC /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
