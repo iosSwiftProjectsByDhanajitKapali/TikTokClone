@@ -38,6 +38,13 @@ final class AuthManager{
                 return
             }
             
+            //Store the username of the SignedIn User in the UserDefaults
+            DatabaseManager.shared.getUserName(for: email) { username in
+                if let username = username {
+                    UserDefaults.standard.setValue(username, forKey: "username")
+                }
+            }
+            
             //Successful signIn
             completion(.success(email))
         }
@@ -51,6 +58,9 @@ final class AuthManager{
                 completion(false)
                 return
             }
+            
+            //Save username in userdefaults
+            UserDefaults.standard.setValue(username, forKey: "username")
             
             //Now save the user info into the database
             DatabaseManager.shared.insertUser(with: emailAdress, username: username, completion: completion)

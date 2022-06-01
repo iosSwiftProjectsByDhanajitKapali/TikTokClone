@@ -154,12 +154,18 @@ private extension CameraViewController {
     }
     
     @objc func didTapNextButton() {
+        //Push CaptionViewController
+        guard let url = recorderVideoURL else{
+            return
+        }
         
+        let vc = CaptionViewController(videoURL: url)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
 
-// MARK: -
+// MARK: - AVCaptureFileOutputRecordingDelegate Methods
 extension CameraViewController : AVCaptureFileOutputRecordingDelegate {
     
     func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
