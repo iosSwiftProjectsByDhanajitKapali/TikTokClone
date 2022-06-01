@@ -45,6 +45,16 @@ final class AuthManager{
     
     public func signUp(with username : String, emailAdress : String, password : String, completion : @escaping (Bool) -> Void) {
         
+        //make sure entered unsername is available
+        Auth.auth().createUser(withEmail: emailAdress, password: password) { result, error in
+            guard result != nil, error == nil else{
+                completion(false)
+                return
+            }
+            
+            //Now save the user info into the database
+            DatabaseManager.shared.insertUser(with: emailAdress, username: username, completion: completion)
+        }
     }
     
     public func signOut(completion : (Bool) -> Void){

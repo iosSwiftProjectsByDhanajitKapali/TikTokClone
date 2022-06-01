@@ -160,9 +160,10 @@ private extension SignInViewController {
         AuthManager.shared.signIn(with: email, password: password) { result in
             DispatchQueue.main.async { [weak self] in
                 switch result {
-                case .success(let email):
-                    break
+                case .success(let _):
+                    self?.dismiss(animated: true)
                 case .failure(let error):
+                    print(error)
                     let alert = UIAlertController(
                         title: "Sign In Failed",
                         message: "Please Enter a valid email/password to SignIn",

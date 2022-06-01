@@ -161,12 +161,23 @@ private extension SignUpViewController {
             return
         }
         
-        AuthManager.shared.signUp(with: username, emailAdress: email, password: password) { sucess in
-            if sucess { //registred the user sucessfully
-                
-            }else{
-                //
+        AuthManager.shared.signUp(with: username, emailAdress: email, password: password) {[weak self] sucess in
+            DispatchQueue.main.async {
+                if sucess { //registred the user sucessfully
+                    print("Signed Up")
+                    self?.dismiss(animated: true)
+                }else{
+                    //Show an alert
+                    let alert = UIAlertController(
+                        title: "Sign Up Failed",
+                        message: "Something went wrong, Please try again later",
+                        preferredStyle: .alert
+                    )
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
+                    self?.present(alert, animated: true)
+                }
             }
+            
         }
     }
     

@@ -24,6 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Set up Firbase
         FirebaseApp.configure()
         
+        //To SignOut from App *Used For Testing Pupose*
+//        AuthManager.shared.signOut { _ in
+//
+//        }
+        
         return true
     }
 
