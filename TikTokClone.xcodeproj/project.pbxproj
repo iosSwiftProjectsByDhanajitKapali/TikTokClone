@@ -26,6 +26,8 @@
 		017864132845F1F600470BDC /* AuthField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017864122845F1F600470BDC /* AuthField.swift */; };
 		017864152845F55700470BDC /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017864142845F55600470BDC /* AuthButton.swift */; };
 		017864172845FDCF00470BDC /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017864162845FDCF00470BDC /* SignUpViewController.swift */; };
+		0197861728478C93005BABAF /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0197861628478C93005BABAF /* RecordButton.swift */; };
+		0197861928479785005BABAF /* CaptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0197861828479785005BABAF /* CaptionViewController.swift */; };
 		01D66C50283B9EE8005B6462 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D66C4F283B9EE8005B6462 /* UIViewExtension.swift */; };
 		01D66C52283BA5A5005B6462 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D66C51283BA5A5005B6462 /* PostModel.swift */; };
 		01D91FCD28355A0500AA190F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D91FCC28355A0500AA190F /* AppDelegate.swift */; };
@@ -72,6 +74,8 @@
 		017864122845F1F600470BDC /* AuthField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthField.swift; sourceTree = "<group>"; };
 		017864142845F55600470BDC /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		017864162845FDCF00470BDC /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		0197861628478C93005BABAF /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
+		0197861828479785005BABAF /* CaptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionViewController.swift; sourceTree = "<group>"; };
 		01D66C4F283B9EE8005B6462 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		01D66C51283BA5A5005B6462 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		01D91FC928355A0500AA190F /* TikTokClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TikTokClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,6 +123,7 @@
 			children = (
 				017864122845F1F600470BDC /* AuthField.swift */,
 				017864142845F55600470BDC /* AuthButton.swift */,
+				0197861628478C93005BABAF /* RecordButton.swift */,
 			);
 			path = ReusablesUIComponents;
 			sourceTree = "<group>";
@@ -282,6 +287,7 @@
 				01221E552840768F002F92E3 /* ExplorePostCollectionViewCell.swift */,
 				01221E57284076DF002F92E3 /* ExploreUserCollectionViewCell.swift */,
 				01221E59284076F3002F92E3 /* ExploreHashtagCollectionViewCell.swift */,
+				0197861828479785005BABAF /* CaptionViewController.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -456,6 +462,7 @@
 				01D91FFF2835655D00AA190F /* APICaller.swift in Sources */,
 				01D91FFD2835653300AA190F /* PostViewController.swift in Sources */,
 				01D91FF5283564A200AA190F /* SignOutViewController.swift in Sources */,
+				0197861928479785005BABAF /* CaptionViewController.swift in Sources */,
 				01D91FF9283564E300AA190F /* TabBarViewController.swift in Sources */,
 				01D91FEB2835642800AA190F /* CameraViewController.swift in Sources */,
 				01221E5A284076F3002F92E3 /* ExploreHashtagCollectionViewCell.swift in Sources */,
@@ -466,6 +473,7 @@
 				01D91FF32835649800AA190F /* SignInViewController.swift in Sources */,
 				0149CB4B283D26C000707CBE /* ExploreSectionType.swift in Sources */,
 				0149CB43283C337900707CBE /* CommentTableViewCell.swift in Sources */,
+				0197861728478C93005BABAF /* RecordButton.swift in Sources */,
 				01D91FEF2835644F00AA190F /* ProfileViewController.swift in Sources */,
 				01D91FCD28355A0500AA190F /* AppDelegate.swift in Sources */,
 				01D91FCF28355A0500AA190F /* SceneDelegate.swift in Sources */,
