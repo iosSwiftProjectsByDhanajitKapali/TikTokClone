@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class CaptionViewController: UIViewController {
 
@@ -52,6 +53,8 @@ private extension CaptionViewController {
         //Generate a video name that is unique based on id
         let newVideoName = StorageManager.shared.generateVideoName()
         
+        ProgressHUD.show("Posting")
+        
         //Upload video
         StorageManager.shared.uploadVideoURL(from: videoURL, fileName: newVideoName) { sucess in
             DispatchQueue.main.async { [weak self] in
@@ -59,12 +62,16 @@ private extension CaptionViewController {
                     //Update database
                     DatabaseManager.shared.insertPost(fileName: newVideoName) { dataBaseUpdated in
                         if dataBaseUpdated {
+                            HapticsManager.shared.vibrate(for: .success)
+                            ProgressHUD.dismiss()
                             //Reset camera and switch to feed
                             self?.navigationController?.popToRootViewController(animated: true)
                             self?.tabBarController?.selectedIndex = 0
                             self?.tabBarController?.tabBar.isHidden = false
                             print("Uploaded the Video")
                         }else {
+                            HapticsManager.shared.vibrate(for: .error)
+                            ProgressHUD.dismiss()
                             //Show error alert
                             let alert = UIAlertController(
                                 title: "Woops",
@@ -77,6 +84,8 @@ private extension CaptionViewController {
                     }
                     
                 }else{
+                    HapticsManager.shared.vibrate(for: .error)
+                    ProgressHUD.dismiss()
                     //Show an alert
                     let alert = UIAlertController(
                         title: "Woops",
