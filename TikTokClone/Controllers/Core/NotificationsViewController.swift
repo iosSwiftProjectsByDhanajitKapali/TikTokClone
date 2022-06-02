@@ -28,6 +28,9 @@ class NotificationsViewController: UIViewController {
         let tableView = UITableView()
         tableView.isHidden = true
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(NotificationPostLikeTableViewCell.self, forCellReuseIdentifier: NotificationPostLikeTableViewCell.identifier)
+        tableView.register(NotificationPostCommentTableViewCell.self, forCellReuseIdentifier: NotificationPostCommentTableViewCell.identifier)
+        tableView.register(NotificationUserFollowTableViewCell.self, forCellReuseIdentifier: NotificationUserFollowTableViewCell.identifier)
         return tableView
     }()
     
@@ -114,10 +117,39 @@ extension NotificationsViewController : UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = notifications[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = model.text
         
-        return cell
+        switch model.type {
+        case .postLike(let postname):
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: NotificationPostLikeTableViewCell.identifier,
+                for: indexPath
+            ) as? NotificationPostLikeTableViewCell else {
+                return tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            }
+            cell.configure(with: postname)
+            return cell
+            
+        case .userFollow(let username):
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: NotificationUserFollowTableViewCell.identifier,
+                for: indexPath
+            ) as? NotificationUserFollowTableViewCell else {
+                return tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            }
+            cell.configure(with: username)
+            return cell
+            
+        case .postComment(let postname):
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: NotificationPostCommentTableViewCell.identifier,
+                for: indexPath
+            ) as? NotificationPostCommentTableViewCell else {
+                return tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            }
+            cell.configure(with: postname)
+            return cell
+        }
+            
     }
     
     
