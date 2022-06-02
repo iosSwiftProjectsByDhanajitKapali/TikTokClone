@@ -10,11 +10,32 @@ import UIKit
 class NotificationsViewController: UIViewController {
 
     
+    // MARK: - Private Data Members
+    private var notifications = [NotificationModel]()
+    
+    
     // MARK: - UI Components
-    private let textInput : UITextField = {
-        let field = UITextField()
-        field.backgroundColor = .red
-        return field
+    private let notNotificationsLabel : UILabel = {
+        let label = UILabel()
+        label.textColor = .secondaryLabel
+        label.text = "No Notifications"
+        label.textAlignment = .center
+        label.isHidden = true
+        return label
+    }()
+    
+    private let tableView : UITableView = {
+        let tableView = UITableView()
+        tableView.isHidden = true
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        return tableView
+    }()
+    
+    private let spinner : UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.tintColor = .white
+        spinner.startAnimating()
+        return spinner
     }()
     
 }
@@ -26,20 +47,82 @@ extension NotificationsViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        view.addSubview(notNotificationsLabel)
+        view.addSubview(tableView)
+        view.addSubview(spinner)
         
-        view.addSubview(textInput)
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        fetchNotifications()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        let textFieldHeight : CGFloat = 40
-        textInput.frame = CGRect(
-            x: 20,
-            y: (view.height - textFieldHeight)/2,
-            width: view.width-40,
-            height: textFieldHeight
-        )
+        tableView.frame = view.bounds
+        notNotificationsLabel.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
+        notNotificationsLabel.center = view.center
+        spinner.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        spinner.center = view.center
+    }
+    
+}
+
+
+// MARK: - Private Methods
+private extension NotificationsViewController {
+    
+    func fetchNotifications() {
+        DatabaseManager.shared.getNotifications { [weak self]notifications in
+            DispatchQueue.main.async {
+                self?.spinner.stopAnimating()
+                self?.spinner.isHidden = true
+                self?.notifications = notifications
+                self?.updateUI()
+            }
+            
+        }
+    }
+    
+    func updateUI() {
+        if notifications.isEmpty {
+            notNotificationsLabel.isHidden = false
+            tableView.isHidden = true
+            
+        }else {
+            notNotificationsLabel.isHidden = true
+            tableView.isHidden = false
+        }
+        
+        tableView.reloadData()
+    }
+    
+}
+
+
+// MARK: - UITableViewDelegate, UITableViewDataSource Methods
+extension NotificationsViewController : UITableViewDelegate, UITableViewDataSource{
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return notifications.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let model = notifications[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = model.text
+        
+        return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
     
 }

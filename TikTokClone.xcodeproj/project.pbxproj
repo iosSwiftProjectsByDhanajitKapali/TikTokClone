@@ -13,6 +13,7 @@
 		01221E562840768F002F92E3 /* ExplorePostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01221E552840768F002F92E3 /* ExplorePostCollectionViewCell.swift */; };
 		01221E58284076DF002F92E3 /* ExploreUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01221E57284076DF002F92E3 /* ExploreUserCollectionViewCell.swift */; };
 		01221E5A284076F3002F92E3 /* ExploreHashtagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01221E59284076F3002F92E3 /* ExploreHashtagCollectionViewCell.swift */; };
+		0128AF882848BCB800B72AF6 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0128AF872848BCB800B72AF6 /* Notifications.swift */; };
 		0149CB3D283C0E8B00707CBE /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149CB3C283C0E8B00707CBE /* CommentsViewController.swift */; };
 		0149CB3F283C1B8600707CBE /* PostComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149CB3E283C1B8600707CBE /* PostComment.swift */; };
 		0149CB41283C1BB100707CBE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149CB40283C1BB100707CBE /* User.swift */; };
@@ -61,6 +62,7 @@
 		01221E552840768F002F92E3 /* ExplorePostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorePostCollectionViewCell.swift; sourceTree = "<group>"; };
 		01221E57284076DF002F92E3 /* ExploreUserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreUserCollectionViewCell.swift; sourceTree = "<group>"; };
 		01221E59284076F3002F92E3 /* ExploreHashtagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreHashtagCollectionViewCell.swift; sourceTree = "<group>"; };
+		0128AF872848BCB800B72AF6 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		0149CB3C283C0E8B00707CBE /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		0149CB3E283C1B8600707CBE /* PostComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostComment.swift; sourceTree = "<group>"; };
 		0149CB40283C1BB100707CBE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				0149CB4A283D26C000707CBE /* ExploreSectionType.swift */,
 				0149CB4C283D26D700707CBE /* ExploreCell.swift */,
 				0149CB4E283D26F600707CBE /* ExploreSection.swift */,
+				0128AF872848BCB800B72AF6 /* Notifications.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0128AF882848BCB800B72AF6 /* Notifications.swift in Sources */,
 				01D92007283565D300AA190F /* HapticsManager.swift in Sources */,
 				017864152845F55700470BDC /* AuthButton.swift in Sources */,
 				01D66C52283BA5A5005B6462 /* PostModel.swift in Sources */,
