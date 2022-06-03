@@ -30,12 +30,30 @@ struct NotificationModel {
     let date : Date
     
     static func mockData() -> [NotificationModel] {
-        return Array(0...100).compactMap({
+        let first = Array(0...5).compactMap({
             NotificationModel(
                 text: "Something happened: \($0)",
                 type: .userFollow(username: "charlie"),
                 date: Date()
             )
         })
+        
+        let second = Array(0...5).compactMap({
+            NotificationModel(
+                text: " Someone liked your wonderful post, sdadasdasdasd: \($0)",
+                type: .postLike(postname: "Post like, dhanajei jabfr liekd uotu imahe"),
+                date: Date()
+            )
+        })
+        
+        let third = Array(0...5).compactMap({
+            NotificationModel(
+                text: "Someone commented on your post, ncjndjsjncdjncjdcnjdnc: \($0)",
+                type: .postComment(postname: "what a wonderful pait, nbai maxha a ya"),
+                date: Date()
+            )
+        })
+        
+        return first + second + third
     }
 }
