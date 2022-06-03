@@ -56,6 +56,9 @@ extension NotificationsViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        let control = UIRefreshControl()
+        control.addTarget(self, action: #selector(didPullToRefresh(_ :)), for: .valueChanged)
+        tableView.refreshControl = control
         
         fetchNotifications()
     }
@@ -75,6 +78,17 @@ extension NotificationsViewController {
 
 // MARK: - Private Methods
 private extension NotificationsViewController {
+    
+    @objc func didPullToRefresh(_ sender : UIRefreshControl) {
+        sender.beginRefreshing()
+        DatabaseManager.shared.getNotifications { [weak self] notifications in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                self?.notifications = notifications
+                self?.tableView.reloadData()
+                sender.endRefreshing()
+            }
+        }
+    }
     
     func fetchNotifications() {
         DatabaseManager.shared.getNotifications { [weak self]notifications in
