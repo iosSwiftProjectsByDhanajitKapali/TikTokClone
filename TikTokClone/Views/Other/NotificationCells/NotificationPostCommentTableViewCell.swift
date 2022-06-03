@@ -7,9 +7,17 @@
 
 import UIKit
 
+protocol NotificationPostCommentTableViewCellDelegate : AnyObject {
+    func notificationPostCommentTableViewCell(_ cell : NotificationPostCommentTableViewCell, didTapPostWith identifier : String)
+}
+
 class NotificationPostCommentTableViewCell: UITableViewCell {
 
     static let identifier = "NotificationPostCommentTableViewCell"
+    
+    weak var delegate : NotificationPostCommentTableViewCellDelegate?
+    
+    var postID : String?
     
     // MARK: - UI Components
     private let postThumbnailImageView : UIImageView = {
@@ -41,6 +49,10 @@ class NotificationPostCommentTableViewCell: UITableViewCell {
         contentView.addSubview(label)
         contentView.addSubview(dateLabel)
         selectionStyle = .none
+        
+        postThumbnailImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapThumbnail))
+        postThumbnailImageView.addGestureRecognizer(tap)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -86,8 +98,15 @@ class NotificationPostCommentTableViewCell: UITableViewCell {
         dateLabel.text = nil
     }
     
+    @objc func didTapThumbnail() {
+        guard let id = postID else {
+            return
+        }
+        delegate?.notificationPostCommentTableViewCell(self, didTapPostWith: id)
+    }
+    
     func configure(with postFileName : String, model : NotificationModel) {
-        
+        postID = postFileName
         postThumbnailImageView.image = UIImage(named: "sampleImage")
         label.text = model.text
         dateLabel.text = .date(with: model.date)

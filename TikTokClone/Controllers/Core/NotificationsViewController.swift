@@ -115,6 +115,12 @@ private extension NotificationsViewController {
         tableView.reloadData()
     }
     
+    func openPost(with id : String) {
+        let vc = PostViewController(model: PostModel(identifier: id))
+        vc.title = "Video"
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 
 
@@ -140,6 +146,7 @@ extension NotificationsViewController : UITableViewDelegate, UITableViewDataSour
             ) as? NotificationPostLikeTableViewCell else {
                 return tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             }
+            cell.delegate = self
             cell.configure(with: postname, model : model)
             return cell
             
@@ -150,6 +157,7 @@ extension NotificationsViewController : UITableViewDelegate, UITableViewDataSour
             ) as? NotificationUserFollowTableViewCell else {
                 return tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             }
+            cell.delegate = self
             cell.configure(with: username, model : model)
             return cell
             
@@ -160,6 +168,7 @@ extension NotificationsViewController : UITableViewDelegate, UITableViewDataSour
             ) as? NotificationPostCommentTableViewCell else {
                 return tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             }
+            cell.delegate = self
             cell.configure(with: postname, model : model)
             return cell
         }
@@ -197,4 +206,40 @@ extension NotificationsViewController : UITableViewDelegate, UITableViewDataSour
         
     }
     
+}
+
+
+// MARK: - NotificationUserFollowTableViewCellDelegate Methods
+extension NotificationsViewController : NotificationUserFollowTableViewCellDelegate{
+    func notificationUserFollowTableViewCell(_ cell: NotificationUserFollowTableViewCell, didTapFollowFor username: String) {
+        
+    }
+    
+    func notificationUserFollowTableViewCell(_cell: NotificationUserFollowTableViewCell, didTapAatarFor username: String) {
+        let vc = ProfileViewController(user: User(
+            userName: username,
+            profilePictureURL: nil,
+            identifier: "123")
+        )
+        vc.title = username.uppercased()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+
+// MARK: - NotificationPostLikeTableViewCellDelegate Methods
+extension NotificationsViewController : NotificationPostLikeTableViewCellDelegate{
+    func notificationPostLikeTableViewCell(_ cell: NotificationPostLikeTableViewCell, didTapPostWith identifier: String) {
+        
+        openPost(with: identifier)
+    }
+}
+
+
+// MARK: - , NotificationPostCommentTableViewCellDelegate Methods
+extension NotificationsViewController : NotificationPostCommentTableViewCellDelegate{
+    func notificationPostCommentTableViewCell(_ cell: NotificationPostCommentTableViewCell, didTapPostWith identifier: String) {
+        
+        openPost(with: identifier)
+    }
 }
