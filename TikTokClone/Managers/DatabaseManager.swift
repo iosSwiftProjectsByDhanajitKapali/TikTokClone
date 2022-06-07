@@ -160,5 +160,102 @@ final class DatabaseManager {
         }
     }
     
+    public func isValidRelationShip(
+        for user : User,
+        type : UserListViewController.ListType,
+        completion : @escaping (Bool) -> Void
+    ) {
+        guard let currentUsername = UserDefaults.standard.string(forKey: "username")?.lowercased() else {
+            //completion(false)
+            return
+        }
+        
+        let path = "users/\(user.userName.lowercased())/\(type.rawValue)"
+        
+        database.child(path).observeSingleEvent(of: .value) { snapshot in
+            guard let usernameCollection = snapshot.value as? [String] else {
+                completion(false)
+                return
+            }
+            
+            completion(usernameCollection.contains(currentUsername))
+        }
+    }
     
+    /// Update follow status for user
+    /// - Parameters:
+    ///   - user: Target user
+    ///   - follow: Follow or unfollow status
+    ///   - completion: Result callback
+    public func updateRelationship(
+        for user: User,
+        follow: Bool,
+        completion: @escaping (Bool) -> Void
+    ) {
+        guard let currentUserUsername = UserDefaults.standard.string(forKey: "username")?.lowercased() else {
+            return
+        }
+
+        if follow {
+            // follow
+
+            // Insert into current user's following
+            let path = "users/\(currentUserUsername)/following"
+            database.child(path).observeSingleEvent(of: .value) { (snapshot) in
+                let usernameToInsert = user.userName.lowercased()
+                if var current = snapshot.value as? [String] {
+                    current.append(usernameToInsert)
+                    self.database.child(path).setValue(current) { error, _ in
+                        completion(error == nil)
+                    }
+                } else {
+                    self.database.child(path).setValue([usernameToInsert]) { error, _ in
+                        completion(error == nil)
+                    }
+                }
+            }
+
+            // Insert in target users followers
+            let path2 = "users/\(user.userName.lowercased())/followers"
+            database.child(path2).observeSingleEvent(of: .value) { (snapshot) in
+                let usernameToInsert = currentUserUsername.lowercased()
+                if var current = snapshot.value as? [String] {
+                    current.append(usernameToInsert)
+                    self.database.child(path2).setValue(current) { error, _ in
+                        completion(error == nil)
+                    }
+                } else {
+                    self.database.child(path2).setValue([usernameToInsert]) { error, _ in
+                        completion(error == nil)
+                    }
+                }
+            }
+        } else {
+            // unfollow
+
+            // Remove from current user following
+            let path = "users/\(currentUserUsername)/following"
+            database.child(path).observeSingleEvent(of: .value) { (snapshot) in
+                let usernameToRemove = user.userName.lowercased()
+                if var current = snapshot.value as? [String] {
+                    current.removeAll(where: { $0 == usernameToRemove })
+                    self.database.child(path).setValue(current) { error, _ in
+                        completion(error == nil)
+                    }
+                }
+            }
+
+            // Remove in target users followers
+            let path2 = "users/\(user.userName.lowercased())/followers"
+            database.child(path2).observeSingleEvent(of: .value) { (snapshot) in
+                let usernameToRemove = currentUserUsername.lowercased()
+                if var current = snapshot.value as? [String] {
+                    current.removeAll(where: { $0 == usernameToRemove })
+                    self.database.child(path2).setValue(current) { error, _ in
+                        completion(error == nil)
+                    }
+                }
+            }
+        }
+    }
 }
