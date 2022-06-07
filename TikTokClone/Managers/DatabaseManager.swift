@@ -143,8 +143,21 @@ final class DatabaseManager {
         }
     }
     
-    public func getAllUsers(completion : @escaping([String]) -> Void){
+    public func getRelationShips(
+        for user : User,
+        type : UserListViewController.ListType,
+        completion : @escaping ([String]) -> Void
+    ){
+        let path = "users/\(user.userName.lowercased())/\(type.rawValue)"
         
+        database.child(path).observeSingleEvent(of: .value) { snapshot in
+            guard let usernameCollection = snapshot.value as? [String] else {
+                completion([])
+                return
+            }
+            
+            completion(usernameCollection)
+        }
     }
     
     

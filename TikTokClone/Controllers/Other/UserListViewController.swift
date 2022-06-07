@@ -9,13 +9,15 @@ import UIKit
 
 class UserListViewController: UIViewController {
     
+    public var users = [String]()
+    
     // MARK: - Private Data Members
-    enum ListType {
+    enum ListType : String {
         case followers
         case following
     }
-    let user : User
-    let type : ListType
+    private let user : User
+    private let type : ListType
     
     
     // MARK: - UI Components
@@ -23,6 +25,14 @@ class UserListViewController: UIViewController {
         let tableView = UITableView(frame: .zero)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         return tableView
+    }()
+    
+    private let noUsersLabel : UILabel = {
+        let label = UILabel()
+        label.text = "No Users"
+        label.textAlignment = .center
+        label.textColor = .secondaryLabel
+        return label
     }()
     
     
@@ -54,14 +64,27 @@ extension UserListViewController {
         case .following:
             title = "Following"
         }
-        view.addSubview(tableView)
-        tableView.delegate = self
-        tableView.dataSource = self
+        
+        if users.isEmpty {
+            view.addSubview(noUsersLabel)
+            noUsersLabel.sizeToFit()
+            
+        }else {
+            view.addSubview(tableView)
+            tableView.delegate = self
+            tableView.dataSource = self
+        }
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        tableView.frame = view.bounds
+        if tableView.superview == view {
+            tableView.frame = view.bounds
+            
+        }else {
+            noUsersLabel.center = view.center
+        }
+        
     }
 }
 
@@ -70,13 +93,14 @@ extension UserListViewController {
 extension UserListViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = "Hello"
+        cell.textLabel?.text = users[indexPath.row].lowercased()
+        cell.selectionStyle = .none
         return cell
     }
     

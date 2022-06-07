@@ -23,6 +23,8 @@ class ProfileViewController: UIViewController {
         case PhotoLibrary
     }
     private var posts = [PostModel]()
+    private var followers = [String]()
+    private var following = [String]()
     
     // MARK: - UI Components
     private let collectionView : UICollectionView = {
@@ -170,14 +172,36 @@ extension ProfileViewController : UICollectionViewDelegate, UICollectionViewData
         }
         header.delegate = self
         
-        //Mock with a ViewModel
-        let viewModel = ProfileHeaderViewModel(
-            avatarImageURL: user.profilePictureURL,
-            followerCount: 120,
-            followingCount: 200,
-            isFollowing: isCurrentUserProfile ? nil : false
-        )
-        header.configure(with: viewModel)
+        //Get the Followers/Following count
+        let group = DispatchGroup()
+        group.enter()
+        group.enter()
+        
+        DatabaseManager.shared.getRelationShips(for: user, type: .followers) { [weak self] followers in
+            defer {
+                group.leave()
+            }
+            self?.followers = followers
+        }
+        DatabaseManager.shared.getRelationShips(for: user, type: .following) { [weak self] following in
+            defer {
+                group.leave()
+            }
+            self?.following = following
+        }
+        
+        group.notify(queue: .main) {
+            //Mock with a ViewModel
+            let viewModel = ProfileHeaderViewModel(
+                avatarImageURL: self.user.profilePictureURL,
+                followerCount: self.followers.count,
+                followingCount: self.following.count,
+                isFollowing: self.isCurrentUserProfile ? nil : false
+            )
+            header.configure(with: viewModel)
+        }
+        
+        
         
         return header
     }
@@ -208,11 +232,16 @@ extension ProfileViewController : ProfileHeaderCollectionReusableViewDelegate {
     
     func profileHeaderCollectionReusableView(_ header: ProfileHeaderCollectionReusableView, didTapFollowersButtonWith viewModel: ProfileHeaderViewModel) {
            
-        
+        let vc = UserListViewController(type: .followers, user: user)
+        vc.users = followers
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func profileHeaderCollectionReusableView(_ header: ProfileHeaderCollectionReusableView, didTapFollowingButtonWith viewModel: ProfileHeaderViewModel) {
         
+        let vc = UserListViewController(type: .following, user: user)
+        vc.users = following
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func profileHeaderCollectionReusableView(_ header: ProfileHeaderCollectionReusableView, didTapAvatarFor viewModel:  ProfileHeaderViewModel) {
