@@ -8,8 +8,20 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-
+    
     let user : User
+    
+    var isCurrentUserProfile : Bool {
+        if let username = UserDefaults.standard.string(forKey: "username") {
+            return user.userName.lowercased() == username.lowercased()
+        }
+        return false
+    }
+    
+    enum PicturePickerType {
+        case Camera
+        case PhotoLibrary
+    }
     
     // MARK: - UI Components
     private let collectionView : UICollectionView = {
@@ -75,11 +87,19 @@ extension ProfileViewController {
 
 
 // MARK: - Private Methods
-extension ProfileViewController {
+private extension ProfileViewController {
     
     @objc func didTapSettings(){
         let vc = SettingsViewController()
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func presentProfilePicturePicker(type : PicturePickerType) {
+        let picker = UIImagePickerController()
+        picker.sourceType = type == .Camera ? .camera : .photoLibrary
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true)
     }
 }
 
@@ -132,7 +152,10 @@ extension ProfileViewController : UICollectionViewDelegate, UICollectionViewData
         
         //Mock with a ViewModel
         let viewModel = ProfileHeaderViewModel(
-            avatarImageURL: nil, followerCount: 120, followingCount: 200, isFollowing: false
+            avatarImageURL: nil,
+            followerCount: 120,
+            followingCount: 200,
+            isFollowing: isCurrentUserProfile ? nil : false
         )
         header.configure(with: viewModel)
         
@@ -172,6 +195,46 @@ extension ProfileViewController : ProfileHeaderCollectionReusableViewDelegate {
         
     }
     
+    func profileHeaderCollectionReusableView(_ header: ProfileHeaderCollectionReusableView, didTapAvatarFor viewModel:  ProfileHeaderViewModel) {
+        
+        guard isCurrentUserProfile else {
+            return
+        }
+        
+        //Show actionSheet to edit profile picture
+        let actionSheet = UIAlertController(title: "Profile Picture", message: nil, preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
+            DispatchQueue.main.async {
+                self.presentProfilePicturePicker(type: .Camera)
+            }
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { _ in
+            DispatchQueue.main.async {
+                self.presentProfilePicturePicker(type: .PhotoLibrary)
+            }
+        }))
+        present(actionSheet, animated: true)
+    }
     
     
+}
+
+
+// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate Methods
+extension ProfileViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        picker.dismiss(animated: true)
+        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
+            return
+        }
+        
+        //Upload image update UI
+    }
 }
