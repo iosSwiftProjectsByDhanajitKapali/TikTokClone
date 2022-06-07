@@ -86,6 +86,7 @@ private extension TabBarViewController{
         cameraNav.navigationBar.shadowImage = UIImage()
         cameraNav.navigationBar.tintColor = .white
         
+        nav4.navigationBar.tintColor = .label
         nav3.navigationBar.tintColor = .label
         
         nav1.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "house"), tag : 1)

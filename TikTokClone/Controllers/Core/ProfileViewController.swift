@@ -37,8 +37,8 @@ class ProfileViewController: UIViewController {
             withReuseIdentifier: "ProfileHeaderCollectionReusableView"
         )
         collectionView.register(
-            UICollectionViewCell.self,
-            forCellWithReuseIdentifier: "cell"
+            PostCollectionViewCell.self,
+            forCellWithReuseIdentifier: PostCollectionViewCell.identifier
         )
         return collectionView
     }()
@@ -128,14 +128,22 @@ extension ProfileViewController : UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = .systemBlue
+        let model = posts[indexPath.row]
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostCollectionViewCell.identifier, for: indexPath) as? PostCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        cell.configure(with: model)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         //Open Post
+        let post = posts[indexPath.row]
+        let vc = PostViewController(model: post)
+        vc.delegate = self
+        vc.title = "video"
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -271,4 +279,18 @@ extension ProfileViewController : UIImagePickerControllerDelegate, UINavigationC
             }
         }
     }
+}
+
+
+// MARK: - PostViewControllerDelegate Methods
+extension ProfileViewController : PostViewControllerDelegate {
+    func postViewController(_ vc: PostViewController, didTapCommentsButtonFor post: PostModel) {
+        
+    }
+    
+    func postViewController(_ vc: PostViewController, didTapProfileButtonFor post: PostModel) {
+        
+    }
+    
+    
 }

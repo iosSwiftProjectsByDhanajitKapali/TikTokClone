@@ -61,6 +61,16 @@ final class StorageManager {
         }
     }
     
+    public func getDownloadURL(for post : PostModel, completion : @escaping (Result<URL, Error>) -> Void) {
+        storageBucket.child(post.videoChildPath).downloadURL { url, error in
+            if let error = error {
+                completion(.failure(error))
+            } else if let url = url {
+                completion(.success(url))
+            }
+        }
+    }
+    
     public func generateVideoName() -> String{
         let uuidString = UUID().uuidString
         let number = Int.random(in: 0...1000)
