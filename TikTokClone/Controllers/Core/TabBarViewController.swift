@@ -53,7 +53,11 @@ private extension TabBarViewController{
         let explore = ExploreViewController()
         let camera = CameraViewController()
         let notifications = NotificationsViewController()
-        let profile = ProfileViewController(user: User(userName: "self", profilePictureURL: nil, identifier: "abc123"))
+        let profile = ProfileViewController(user: User(
+            userName: UserDefaults.standard.string(forKey: "username")?.uppercased() ?? "Me",
+            profilePictureURL: nil,
+            identifier: UserDefaults.standard.string(forKey: "username")?.uppercased() ?? ""
+        ))
         
         //home.title = "Home"
         //explore.title = "Explore"
