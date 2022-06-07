@@ -120,7 +120,11 @@ final class ExploreManager {
                 //Use id to fetch Post from Firebase
                 let postId = model.id
                 DispatchQueue.main.async {
-                    let vc = PostViewController(model: PostModel(identifier: postId))
+                    let vc = PostViewController(
+                        model: PostModel(
+                            identifier: postId,
+                            user: User(userName: "kanyewest", profilePictureURL: nil, identifier: UUID().uuidString)
+                        ))
                     self?.delegate?.pushViewController(vc)
                 }
             }
@@ -141,7 +145,11 @@ final class ExploreManager {
                 //Use id to fetch Post from Firebase
                 let postId = model.id
                 DispatchQueue.main.async {
-                    let vc = PostViewController(model: PostModel(identifier: postId))
+                    let vc = PostViewController(
+                        model: PostModel(
+                            identifier: postId,
+                            user: User(userName: "kanyewest", profilePictureURL: nil, identifier: UUID().uuidString)
+                        ))
                     self?.delegate?.pushViewController(vc)
                 }
                 
@@ -163,7 +171,11 @@ final class ExploreManager {
                 //Use id to fetch Post from Firebase
                 let postId = model.id
                 DispatchQueue.main.async {
-                    let vc = PostViewController(model: PostModel(identifier: postId))
+                    let vc = PostViewController(
+                        model: PostModel(
+                            identifier: postId,
+                            user: User(userName: "kanyewest", profilePictureURL: nil, identifier: UUID().uuidString)
+                        ))
                     self?.delegate?.pushViewController(vc)
                 }
                     

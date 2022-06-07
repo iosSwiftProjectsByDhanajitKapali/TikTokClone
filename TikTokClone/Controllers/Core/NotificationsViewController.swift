@@ -116,7 +116,11 @@ private extension NotificationsViewController {
     }
     
     func openPost(with id : String) {
-        let vc = PostViewController(model: PostModel(identifier: id))
+        let vc = PostViewController(
+            model: PostModel(
+                identifier: id,
+                user: User(userName: "kanyewest", profilePictureURL: nil, identifier: UUID().uuidString)
+            ))
         vc.title = "Video"
         navigationController?.pushViewController(vc, animated: true)
     }

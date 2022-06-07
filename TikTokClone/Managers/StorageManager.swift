@@ -17,10 +17,6 @@ final class StorageManager {
     
     
     // MARK: - Public Methods
-    public func getViedoURL(with identifier : String, completion : @escaping(URL) -> Void){
-        
-    }
-    
     public func uploadVideoURL(from url : URL, fileName : String, completion : @escaping (Bool) -> Void){
         guard let username = UserDefaults.standard.string(forKey: "username") else {
             return

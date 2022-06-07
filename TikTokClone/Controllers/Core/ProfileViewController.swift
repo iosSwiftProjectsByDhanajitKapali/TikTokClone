@@ -10,19 +10,19 @@ import ProgressHUD
 
 class ProfileViewController: UIViewController {
     
-    var user : User
-    
-    var isCurrentUserProfile : Bool {
+    // MARK: - Private Data Members
+    private var user : User
+    private var isCurrentUserProfile : Bool {
         if let username = UserDefaults.standard.string(forKey: "username") {
             return user.userName.lowercased() == username.lowercased()
         }
         return false
     }
-    
     enum PicturePickerType {
         case Camera
         case PhotoLibrary
     }
+    private var posts = [PostModel]()
     
     // MARK: - UI Components
     private let collectionView : UICollectionView = {
@@ -78,6 +78,8 @@ extension ProfileViewController {
             )
         }
         
+        fetchPosts()
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -89,6 +91,15 @@ extension ProfileViewController {
 
 // MARK: - Private Methods
 private extension ProfileViewController {
+    
+    func fetchPosts() {
+        DatabaseManager.shared.getPosts(for: user) { [weak self] posts in
+            DispatchQueue.main.async {
+                self?.posts = posts
+                self?.collectionView.reloadData()
+            }
+        }
+    }
     
     @objc func didTapSettings(){
         let vc = SettingsViewController()
@@ -113,7 +124,7 @@ extension ProfileViewController : UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return posts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
