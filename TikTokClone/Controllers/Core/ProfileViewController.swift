@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class ProfileViewController: UIViewController {
     
-    let user : User
+    var user : User
     
     var isCurrentUserProfile : Bool {
         if let username = UserDefaults.standard.string(forKey: "username") {
@@ -152,7 +153,7 @@ extension ProfileViewController : UICollectionViewDelegate, UICollectionViewData
         
         //Mock with a ViewModel
         let viewModel = ProfileHeaderViewModel(
-            avatarImageURL: nil,
+            avatarImageURL: user.profilePictureURL,
             followerCount: 120,
             followingCount: 200,
             isFollowing: isCurrentUserProfile ? nil : false
@@ -236,5 +237,27 @@ extension ProfileViewController : UIImagePickerControllerDelegate, UINavigationC
         }
         
         //Upload image update UI
+        ProgressHUD.show("Uploading")
+        StorageManager.shared.uploadProfilePictue(with: image) { [weak self] result in
+            DispatchQueue.main.async {
+                guard let strongSelf = self else {
+                    return
+                }
+                switch result {
+                case .success(let downloadURL):
+                    UserDefaults.standard.setValue(downloadURL.absoluteString, forKey: "profile_picture_url")
+                    strongSelf.user = User(
+                        userName: strongSelf.user.userName,
+                        profilePictureURL: downloadURL,
+                        identifier: strongSelf.user.userName
+                    )
+                    ProgressHUD.showSuccess("Updated")
+                    strongSelf.collectionView.reloadData()
+                    
+                case .failure(_):
+                    ProgressHUD.showError("Failed to upload profile picture")
+                }
+            }
+        }
     }
 }

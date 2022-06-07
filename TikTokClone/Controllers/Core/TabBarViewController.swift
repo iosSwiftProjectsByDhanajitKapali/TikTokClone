@@ -53,9 +53,14 @@ private extension TabBarViewController{
         let explore = ExploreViewController()
         let camera = CameraViewController()
         let notifications = NotificationsViewController()
+        
+        var profilePictureUrlString : String?
+        if let chachedUrlString = UserDefaults.standard.string(forKey: "profile_picture_url") {
+            profilePictureUrlString = chachedUrlString
+        }
         let profile = ProfileViewController(user: User(
             userName: UserDefaults.standard.string(forKey: "username")?.uppercased() ?? "Me",
-            profilePictureURL: nil,
+            profilePictureURL: URL(string: profilePictureUrlString ?? ""),
             identifier: UserDefaults.standard.string(forKey: "username")?.uppercased() ?? ""
         ))
         
