@@ -49,7 +49,6 @@
 		01D91FEF2835644F00AA190F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D91FEE2835644F00AA190F /* ProfileViewController.swift */; };
 		01D91FF12835648900AA190F /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D91FF02835648900AA190F /* UserListViewController.swift */; };
 		01D91FF32835649800AA190F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D91FF22835649800AA190F /* SignInViewController.swift */; };
-		01D91FF5283564A200AA190F /* SignOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D91FF4283564A200AA190F /* SignOutViewController.swift */; };
 		01D91FF7283564AD00AA190F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D91FF6283564AD00AA190F /* SettingsViewController.swift */; };
 		01D91FF9283564E300AA190F /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D91FF8283564E300AA190F /* TabBarViewController.swift */; };
 		01D91FFD2835653300AA190F /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D91FFC2835653300AA190F /* PostViewController.swift */; };
@@ -107,7 +106,6 @@
 		01D91FEE2835644F00AA190F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		01D91FF02835648900AA190F /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		01D91FF22835649800AA190F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		01D91FF4283564A200AA190F /* SignOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutViewController.swift; sourceTree = "<group>"; };
 		01D91FF6283564AD00AA190F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		01D91FF8283564E300AA190F /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		01D91FFC2835653300AA190F /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
@@ -168,7 +166,6 @@
 		0183D80D28441914006404B2 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				01D91FF4283564A200AA190F /* SignOutViewController.swift */,
 				01D91FF22835649800AA190F /* SignInViewController.swift */,
 				017864162845FDCF00470BDC /* SignUpViewController.swift */,
 			);
@@ -503,7 +500,6 @@
 				01D920012835659400AA190F /* AuthenticationManager.swift in Sources */,
 				01D91FFF2835655D00AA190F /* APICaller.swift in Sources */,
 				01D91FFD2835653300AA190F /* PostViewController.swift in Sources */,
-				01D91FF5283564A200AA190F /* SignOutViewController.swift in Sources */,
 				0197861928479785005BABAF /* CaptionViewController.swift in Sources */,
 				0128AF902848C41E00B72AF6 /* NotificationPostCommentTableViewCell.swift in Sources */,
 				01D91FF9283564E300AA190F /* TabBarViewController.swift in Sources */,

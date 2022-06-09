@@ -141,6 +141,7 @@ extension ProfileViewController : UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        HapticsManager.shared.vibrateForSelection()
         //Open Post
         let post = posts[indexPath.row]
         let vc = PostViewController(model: post)
@@ -230,6 +231,7 @@ extension ProfileViewController : ProfileHeaderCollectionReusableViewDelegate {
             return
         }
         
+        HapticsManager.shared.vibrateForSelection()
         if self.user.userName == currentUsername {
             //Show Edit Profile Button
             
@@ -265,6 +267,7 @@ extension ProfileViewController : ProfileHeaderCollectionReusableViewDelegate {
     
     func profileHeaderCollectionReusableView(_ header: ProfileHeaderCollectionReusableView, didTapFollowersButtonWith viewModel: ProfileHeaderViewModel) {
            
+        HapticsManager.shared.vibrateForSelection()
         let vc = UserListViewController(type: .followers, user: user)
         vc.users = followers
         navigationController?.pushViewController(vc, animated: true)
@@ -272,6 +275,7 @@ extension ProfileViewController : ProfileHeaderCollectionReusableViewDelegate {
     
     func profileHeaderCollectionReusableView(_ header: ProfileHeaderCollectionReusableView, didTapFollowingButtonWith viewModel: ProfileHeaderViewModel) {
         
+        HapticsManager.shared.vibrateForSelection()
         let vc = UserListViewController(type: .following, user: user)
         vc.users = following
         navigationController?.pushViewController(vc, animated: true)
@@ -283,6 +287,7 @@ extension ProfileViewController : ProfileHeaderCollectionReusableViewDelegate {
             return
         }
         
+        HapticsManager.shared.vibrateForSelection()
         //Show actionSheet to edit profile picture
         let actionSheet = UIAlertController(title: "Profile Picture", message: nil, preferredStyle: .actionSheet)
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -327,6 +332,7 @@ extension ProfileViewController : UIImagePickerControllerDelegate, UINavigationC
                 switch result {
                 case .success(let downloadURL):
                     UserDefaults.standard.setValue(downloadURL.absoluteString, forKey: "profile_picture_url")
+                    HapticsManager.shared.vibrate(for: .success)
                     strongSelf.user = User(
                         userName: strongSelf.user.userName,
                         profilePictureURL: downloadURL,
@@ -336,6 +342,7 @@ extension ProfileViewController : UIImagePickerControllerDelegate, UINavigationC
                     strongSelf.collectionView.reloadData()
                     
                 case .failure(_):
+                    HapticsManager.shared.vibrate(for: .error)
                     ProgressHUD.showError("Failed to upload profile picture")
                 }
             }

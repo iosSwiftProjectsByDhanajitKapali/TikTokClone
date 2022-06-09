@@ -116,6 +116,7 @@ private extension NotificationsViewController {
     }
     
     func openPost(with id : String) {
+        HapticsManager.shared.vibrateForSelection()
         let vc = PostViewController(
             model: PostModel(
                 identifier: id,
@@ -220,6 +221,7 @@ extension NotificationsViewController : NotificationUserFollowTableViewCellDeleg
     }
     
     func notificationUserFollowTableViewCell(_cell: NotificationUserFollowTableViewCell, didTapAatarFor username: String) {
+        HapticsManager.shared.vibrateForSelection()
         let vc = ProfileViewController(user: User(
             userName: username,
             profilePictureURL: nil,

@@ -164,10 +164,12 @@ private extension SignUpViewController {
         AuthManager.shared.signUp(with: username, emailAdress: email, password: password) {[weak self] sucess in
             DispatchQueue.main.async {
                 if sucess { //registred the user sucessfully
+                    HapticsManager.shared.vibrate(for: .success)
                     print("Signed Up")
                     self?.dismiss(animated: true)
                 }else{
                     //Show an alert
+                    HapticsManager.shared.vibrate(for: .error)
                     let alert = UIAlertController(
                         title: "Sign Up Failed",
                         message: "Something went wrong, Please try again later",

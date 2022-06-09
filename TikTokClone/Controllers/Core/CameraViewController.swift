@@ -84,6 +84,7 @@ private extension CameraViewController {
             //Stop recording
             recordButton.toggle(for: .notRecording)
             captureOutput.stopRecording()
+            HapticsManager.shared.vibrateForSelection()
         }else{
             //Save the Video File in the documents directory
             guard var url = FileManager.default.urls(
@@ -93,6 +94,7 @@ private extension CameraViewController {
                 return
             }
             
+            HapticsManager.shared.vibrateForSelection()
             url.appendPathComponent("video.mov")
             
             recordButton.toggle(for: .recording)
@@ -159,6 +161,7 @@ private extension CameraViewController {
             return
         }
         
+        HapticsManager.shared.vibrateForSelection()
         let vc = CaptionViewController(videoURL: url)
         navigationController?.pushViewController(vc, animated: true)
     }

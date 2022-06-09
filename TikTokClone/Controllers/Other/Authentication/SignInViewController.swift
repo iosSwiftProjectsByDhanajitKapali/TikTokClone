@@ -160,10 +160,12 @@ private extension SignInViewController {
         AuthManager.shared.signIn(with: email, password: password) { result in
             DispatchQueue.main.async { [weak self] in
                 switch result {
-                case .success(let _):
+                case .success(_):
+                    HapticsManager.shared.vibrate(for: .success)
                     self?.dismiss(animated: true)
                 case .failure(let error):
                     print(error)
+                    HapticsManager.shared.vibrate(for: .error)
                     let alert = UIAlertController(
                         title: "Sign In Failed",
                         message: "Please Enter a valid email/password to SignIn",

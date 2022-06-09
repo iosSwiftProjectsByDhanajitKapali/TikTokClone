@@ -255,6 +255,7 @@ private extension PostViewController{
             model.isLikedByCurrentUser = true
         }
         
+        HapticsManager.shared.vibrateForSelection()
         let touchPoint = gesture.location(in: view)
         
         //Add Liked Heart Animation
