@@ -6,9 +6,22 @@
 //
 
 import UIKit
+import SafariServices
+
+struct SettingsSection {
+    let title : String
+    let options : [SettingsOption]
+}
+
+struct SettingsOption {
+    let title : String
+    let handler : (() -> Void)
+}
 
 class SettingsViewController: UIViewController {
 
+    var sections = [SettingsSection]()
+    
     // MARK: - UI Components
     private let tableView : UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
@@ -28,6 +41,36 @@ extension SettingsViewController {
         title = "Settings"
         view.backgroundColor = .systemBackground
         view.addSubview(tableView)
+        
+        sections = [
+            SettingsSection(
+                title: "Information",
+                options: [
+                    SettingsOption(
+                        title: "Terms Of Service", handler: { [weak self] in
+                            DispatchQueue.main.async {
+                                guard let url = URL(string: "https://www.tiktok.com/legal/terms-of-service") else{
+                                    return
+                                }
+                                let vc = SFSafariViewController(url: url)
+                                self?.present(vc, animated: true)
+                            }
+                        }
+                    ),
+                    SettingsOption(
+                        title: "Privacy Policy", handler: { [weak self] in
+                            DispatchQueue.main.async {
+                                guard let url = URL(string: "https://www.tiktok.com/legal/privacy-policy") else{
+                                    return
+                                }
+                                let vc = SFSafariViewController(url: url)
+                                self?.present(vc, animated: true)
+                            }
+                        }
+                    )
+                ])
+        ]
+        
         tableView.delegate = self
         tableView.dataSource = self
         createFooter()
@@ -95,15 +138,30 @@ private extension SettingsViewController {
 // MARK: - UITableViewDelegate, UITableViewDataSource Methods
 extension SettingsViewController : UITableViewDelegate, UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return sections[section].options.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let model = sections[indexPath.section].options[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "Hello"
+        cell.textLabel?.text = model.title
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section].title
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let model = sections[indexPath.section].options[indexPath.row]
+        model.handler()
+    }
     
 }
