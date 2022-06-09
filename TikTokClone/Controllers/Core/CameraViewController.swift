@@ -182,6 +182,12 @@ extension CameraViewController : AVCaptureFileOutputRecordingDelegate {
         }
         
         recorderVideoURL = outputFileURL
+        
+        //Save videos in the Photos Library in User has enable this feature from Settings
+        if UserDefaults.standard.bool(forKey: "save_video") {
+            UISaveVideoAtPathToSavedPhotosAlbum(outputFileURL.path, nil, nil, nil)
+        }
+        
         print("Finished video recording to url: \(outputFileURL.absoluteURL)")
         
         //Add "Next" by tapping which user can to add caption for the recorded video

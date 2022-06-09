@@ -26,7 +26,7 @@ class SettingsViewController: UIViewController {
     private let tableView : UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
+        table.register(SaveVideoSwitchTableViewCell.self, forCellReuseIdentifier: SaveVideoSwitchTableViewCell.identifier)
         return table
     }()
 
@@ -44,12 +44,20 @@ extension SettingsViewController {
         
         sections = [
             SettingsSection(
+                title: "Preferences",
+                options: [
+                    SettingsOption(
+                        title: "Save Videos",
+                        handler: { }
+                    ),
+                ]),
+            SettingsSection(
                 title: "Information",
                 options: [
                     SettingsOption(
                         title: "Terms Of Service", handler: { [weak self] in
                             DispatchQueue.main.async {
-                                guard let url = URL(string: "https://www.tiktok.com/legal/terms-of-service") else{
+                                guard let url = URL(string: "https://www.tiktok.com/legal/terms-of-use") else{
                                     return
                                 }
                                 let vc = SFSafariViewController(url: url)
@@ -148,6 +156,19 @@ extension SettingsViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = sections[indexPath.section].options[indexPath.row]
+        
+        if model.title == "Save Videos" {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: SaveVideoSwitchTableViewCell.identifier, for: indexPath) as? SaveVideoSwitchTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.delegate = self
+            cell.configure(with: SwitchCellViewModel(
+                title: model.title,
+                isOn: UserDefaults.standard.bool(forKey: "save_video")
+            ))
+            return cell
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = model.title
         cell.accessoryType = .disclosureIndicator
@@ -164,4 +185,12 @@ extension SettingsViewController : UITableViewDelegate, UITableViewDataSource {
         model.handler()
     }
     
+}
+
+
+// MARK: - SaveVideoSwitchTableViewCellDelegate Methods
+extension SettingsViewController : SaveVideoSwitchTableViewCellDelegate {
+    func saveVideoSwitchTableViewCell(_ cell: SaveVideoSwitchTableViewCell, didUpdateSwitch isOn: Bool) {
+        UserDefaults.standard.setValue(isOn, forKey: "save_video")
+    }
 }
