@@ -40,7 +40,7 @@ final class ExploreManager {
                     
                     DispatchQueue.main.async {
                         let vc = UIViewController()
-                        vc.view.backgroundColor = .red
+                        vc.view.backgroundColor = .secondarySystemBackground
                         vc.title = action.rawValue.uppercased()
                         self?.delegate?.pushViewController(vc)
                     }

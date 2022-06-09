@@ -44,6 +44,7 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
         button.setTitle("Follow", for: .normal)
         button.backgroundColor = .systemPink
         button.titleLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
+        button.setTitleColor(.label, for: .normal)
         return button
     }()
     
@@ -55,6 +56,7 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
         button.titleLabel?.textAlignment = .center
         button.titleLabel?.numberOfLines = 2
         button.backgroundColor = .secondarySystemBackground
+        button.setTitleColor(.label, for: .normal)
         return button
     }()
     
@@ -66,6 +68,7 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
         button.titleLabel?.textAlignment = .center
         button.titleLabel?.numberOfLines = 2
         button.backgroundColor = .secondarySystemBackground
+        button.setTitleColor(.label, for: .normal)
         return button
     }()
     

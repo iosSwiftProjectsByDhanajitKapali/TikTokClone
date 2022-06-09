@@ -24,13 +24,13 @@ class CommentsViewController: UIViewController {
     private let closeButton : UIButton = {
         let button = UIButton()
         button.setBackgroundImage(UIImage(systemName: "xmark"), for: .normal)
-        button.tintColor = .black
+        button.tintColor = .label
         return button
     }()
     
     private let tableView : UITableView = {
         let tableView = UITableView()
-        tableView.backgroundColor = .white
+        tableView.backgroundColor = .secondarySystemBackground
         tableView.register(CommentTableViewCell.self, forCellReuseIdentifier: CommentTableViewCell.identifier)
         return tableView
     }()
@@ -55,7 +55,7 @@ extension CommentsViewController {
         super.viewDidLoad()
         view.addSubview(closeButton)
         closeButton.addTarget(self, action: #selector(didTapCloseButton), for: .touchUpInside)
-        view.backgroundColor = .white
+        view.backgroundColor = .secondarySystemBackground
         
         fetchPostComments()
         
@@ -66,7 +66,7 @@ extension CommentsViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        closeButton.frame = CGRect(x: view.width - 45, y: 10, width: 35, height: 35)
+        closeButton.frame = CGRect(x: view.width - 40, y: 15, width: 25, height: 25)
         tableView.frame = CGRect(
             x: 0,
             y: closeButton.bottom + 10,
