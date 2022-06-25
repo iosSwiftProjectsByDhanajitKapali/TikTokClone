@@ -106,7 +106,15 @@ extension PostViewController {
         view.addSubview(captionLabel)
         view.addSubview(profileButton)
         profileButton.addTarget(self, action: #selector(didTapProfileButton), for: .touchUpInside)
-        
+        player?.volume = 0
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        player?.play()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     override func viewDidLayoutSubviews() {
@@ -176,7 +184,7 @@ private extension PostViewController{
                     playerLayer.frame = strongSelf.view.bounds
                     playerLayer.videoGravity = .resizeAspectFill
                     strongSelf.videoView.layer.addSublayer(playerLayer)
-                    strongSelf.player?.volume = 0.5
+                    strongSelf.player?.volume = 0
                     strongSelf.player?.play()
                     strongSelf.replayVieo()
                 
@@ -191,7 +199,7 @@ private extension PostViewController{
                     playerLayer.frame = strongSelf.view.bounds
                     playerLayer.videoGravity = .resizeAspectFill
                     strongSelf.videoView.layer.addSublayer(playerLayer)
-                    strongSelf.player?.volume = 0.5
+                    strongSelf.player?.volume = 0
                     strongSelf.player?.play()
                     strongSelf.replayVieo()
                 }

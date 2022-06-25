@@ -28,6 +28,8 @@ extension TabBarViewController{
         super.viewDidAppear(animated)
         if !signInPresented {
             presentSignInIfNeeded()
+        }else{
+            
         }
     }
 }
