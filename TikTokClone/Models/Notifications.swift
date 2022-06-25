@@ -37,17 +37,17 @@ struct NotificationModel {
     }
     
     static func mockData() -> [NotificationModel] {
-        let first = Array(0...5).compactMap({
+        let first = Array(0...3).compactMap({
             NotificationModel(
-                text: "Something happened: \($0)",
+                text: "You can follow User\($0)",
                 type: .userFollow(username: "charlie"),
                 date: Date()
             )
         })
         
-        let second = Array(0...5).compactMap({
+        let second = Array(0...2).compactMap({
             NotificationModel(
-                text: " Someone liked your wonderful post, sdadasdasdasd: \($0)",
+                text: " Someone liked your wonderful post: \($0)",
                 type: .postLike(postname: "Post like, dhanajei jabfr liekd uotu imahe"),
                 date: Date()
             )
@@ -55,7 +55,7 @@ struct NotificationModel {
         
         let third = Array(0...5).compactMap({
             NotificationModel(
-                text: "Someone commented on your post, ncjndjsjncdjncjdcnjdnc: \($0)",
+                text: "Someone commented on your post,: \($0)",
                 type: .postComment(postname: "what a wonderful pait, nbai maxha a ya"),
                 date: Date()
             )

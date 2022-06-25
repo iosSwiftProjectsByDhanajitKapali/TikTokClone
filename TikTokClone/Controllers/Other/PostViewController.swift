@@ -144,6 +144,11 @@ extension PostViewController {
         )
         profileButton.layer.cornerRadius = size/2
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        player?.pause()
+    }
 }
 
 
@@ -171,11 +176,13 @@ private extension PostViewController{
                     playerLayer.frame = strongSelf.view.bounds
                     playerLayer.videoGravity = .resizeAspectFill
                     strongSelf.videoView.layer.addSublayer(playerLayer)
-                    strongSelf.player?.volume = 0
+                    strongSelf.player?.volume = 0.5
                     strongSelf.player?.play()
+                    strongSelf.replayVieo()
                 
                 case .failure(_):
-                    guard let path = Bundle.main.path(forResource: "sampleVideo", ofType: "mp4") else {
+                    let randomInt = Int.random(in: 1..<6)
+                    guard let path = Bundle.main.path(forResource: "sampleVideo\(randomInt)", ofType: "mp4") else {
                         return
                     }
                     let url = URL(fileURLWithPath: path)
@@ -184,8 +191,9 @@ private extension PostViewController{
                     playerLayer.frame = strongSelf.view.bounds
                     playerLayer.videoGravity = .resizeAspectFill
                     strongSelf.videoView.layer.addSublayer(playerLayer)
-                    strongSelf.player?.volume = 0
+                    strongSelf.player?.volume = 0.5
                     strongSelf.player?.play()
+                    strongSelf.replayVieo()
                 }
             }
         }
@@ -203,6 +211,17 @@ private extension PostViewController{
             using: { _ in
                 player.seek(to: .zero)
                 player.play()
+            })
+    }
+    
+    func replayVieo () {
+        playerDidFinishObserver = NotificationCenter.default.addObserver(
+            forName: .AVPlayerItemDidPlayToEndTime,
+            object: player?.currentItem,
+            queue: .main,
+            using: { [weak self] _ in
+                self?.player?.seek(to: .zero)
+                self?.player?.play()
             })
     }
     

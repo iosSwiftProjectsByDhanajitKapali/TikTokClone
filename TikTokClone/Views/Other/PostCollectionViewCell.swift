@@ -20,12 +20,21 @@ class PostCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
+    private let activityIndicator : UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        //indicator.style = .
+        indicator.hidesWhenStopped = true
+        return indicator
+    }()
+    
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         clipsToBounds = true
         contentView.backgroundColor = .secondarySystemBackground
         contentView.addSubview(imageView)
+        imageView.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
     }
     required init?(coder : NSCoder) {
         fatalError()
@@ -44,6 +53,7 @@ extension PostCollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         imageView.frame = contentView.bounds
+        activityIndicator.center = imageView.center
     }
 }
 
@@ -54,24 +64,35 @@ extension PostCollectionViewCell {
     func configure(with post : PostModel) {
         //Derive the child path and Get download URL
         StorageManager.shared.getDownloadURL(for: post) { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let url):
-                    //Generate thumbnail
+            switch result {
+            case .success(let url):
+                //Generate thumbnail
+                let workItem = DispatchWorkItem {
+                    //print(Thread.current)
+                    print("lol1")
                     let asset = AVAsset(url: url)
                     let generator = AVAssetImageGenerator(asset: asset)
                     do{
                         let cgImage = try generator.copyCGImage(at: .zero, actualTime: nil)
-                        self.imageView.image = UIImage(cgImage: cgImage)
+                        DispatchQueue.main.async {
+                            print("lol2")
+                            self.imageView.image = UIImage(cgImage: cgImage)
+                            self.activityIndicator.stopAnimating()
+                            self.activityIndicator.removeFromSuperview()
+                        }
                     }
                     catch{
                         
                     }
-                
-                case .failure(let error):
-                    print("Falied to get downloaded url: \(error)")
                 }
+                DispatchQueue.global().asyncAfter(deadline: .now(), execute: workItem)
+                //print("lol1")
+                
+            
+            case .failure(let error):
+                print("Falied to get downloaded url: \(error)")
             }
+            
             
         }
     }

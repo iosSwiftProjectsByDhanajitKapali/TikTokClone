@@ -23,10 +23,14 @@
 		0149CB43283C337900707CBE /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149CB42283C337900707CBE /* CommentTableViewCell.swift */; };
 		0149CB45283C36EA00707CBE /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149CB44283C36EA00707CBE /* DateFormatterExtension.swift */; };
 		0149CB47283C376200707CBE /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149CB46283C376200707CBE /* StringExtension.swift */; };
-		0149CB49283CEC2300707CBE /* sampleVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 0149CB48283CEC2300707CBE /* sampleVideo.mp4 */; };
+		0149CB49283CEC2300707CBE /* sampleVideo1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 0149CB48283CEC2300707CBE /* sampleVideo1.mp4 */; };
 		0149CB4B283D26C000707CBE /* ExploreSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149CB4A283D26C000707CBE /* ExploreSectionType.swift */; };
 		0149CB4D283D26D700707CBE /* ExploreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149CB4C283D26D700707CBE /* ExploreCell.swift */; };
 		0149CB4F283D26F600707CBE /* ExploreSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149CB4E283D26F600707CBE /* ExploreSection.swift */; };
+		017109B828673C1D00A09A86 /* sampleVideo5.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 017109B428673C1A00A09A86 /* sampleVideo5.mp4 */; };
+		017109B928673C1D00A09A86 /* sampleVideo3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 017109B528673C1B00A09A86 /* sampleVideo3.mp4 */; };
+		017109BA28673C1D00A09A86 /* sampleVideo2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 017109B628673C1C00A09A86 /* sampleVideo2.mp4 */; };
+		017109BB28673C1D00A09A86 /* sampleVideo4.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 017109B728673C1D00A09A86 /* sampleVideo4.mp4 */; };
 		017864132845F1F600470BDC /* AuthField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017864122845F1F600470BDC /* AuthField.swift */; };
 		017864152845F55700470BDC /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017864142845F55600470BDC /* AuthButton.swift */; };
 		017864172845FDCF00470BDC /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017864162845FDCF00470BDC /* SignUpViewController.swift */; };
@@ -78,10 +82,14 @@
 		0149CB42283C337900707CBE /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		0149CB44283C36EA00707CBE /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
 		0149CB46283C376200707CBE /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
-		0149CB48283CEC2300707CBE /* sampleVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sampleVideo.mp4; sourceTree = "<group>"; };
+		0149CB48283CEC2300707CBE /* sampleVideo1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sampleVideo1.mp4; sourceTree = "<group>"; };
 		0149CB4A283D26C000707CBE /* ExploreSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreSectionType.swift; sourceTree = "<group>"; };
 		0149CB4C283D26D700707CBE /* ExploreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCell.swift; sourceTree = "<group>"; };
 		0149CB4E283D26F600707CBE /* ExploreSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreSection.swift; sourceTree = "<group>"; };
+		017109B428673C1A00A09A86 /* sampleVideo5.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sampleVideo5.mp4; sourceTree = "<group>"; };
+		017109B528673C1B00A09A86 /* sampleVideo3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sampleVideo3.mp4; sourceTree = "<group>"; };
+		017109B628673C1C00A09A86 /* sampleVideo2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sampleVideo2.mp4; sourceTree = "<group>"; };
+		017109B728673C1D00A09A86 /* sampleVideo4.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sampleVideo4.mp4; sourceTree = "<group>"; };
 		017864122845F1F600470BDC /* AuthField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthField.swift; sourceTree = "<group>"; };
 		017864142845F55600470BDC /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		017864162845FDCF00470BDC /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -221,7 +229,11 @@
 			isa = PBXGroup;
 			children = (
 				01221E4F2840653F002F92E3 /* explore.json */,
-				0149CB48283CEC2300707CBE /* sampleVideo.mp4 */,
+				0149CB48283CEC2300707CBE /* sampleVideo1.mp4 */,
+				017109B628673C1C00A09A86 /* sampleVideo2.mp4 */,
+				017109B528673C1B00A09A86 /* sampleVideo3.mp4 */,
+				017109B728673C1D00A09A86 /* sampleVideo4.mp4 */,
+				017109B428673C1A00A09A86 /* sampleVideo5.mp4 */,
 				01D91FCE28355A0500AA190F /* SceneDelegate.swift */,
 				01D91FCC28355A0500AA190F /* AppDelegate.swift */,
 			);
@@ -408,10 +420,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				01221E502840653F002F92E3 /* explore.json in Resources */,
+				017109B828673C1D00A09A86 /* sampleVideo5.mp4 in Resources */,
+				017109BA28673C1D00A09A86 /* sampleVideo2.mp4 in Resources */,
 				01D91FD928355A1000AA190F /* LaunchScreen.storyboard in Resources */,
 				01D91FD628355A1000AA190F /* Assets.xcassets in Resources */,
+				017109B928673C1D00A09A86 /* sampleVideo3.mp4 in Resources */,
 				01FC67472837994C00950428 /* GoogleService-Info.plist in Resources */,
-				0149CB49283CEC2300707CBE /* sampleVideo.mp4 in Resources */,
+				017109BB28673C1D00A09A86 /* sampleVideo4.mp4 in Resources */,
+				0149CB49283CEC2300707CBE /* sampleVideo1.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
